@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="user-select: auto;">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="user-select: auto;">
       <a class="navbar-brand" href="/" style="user-select: auto;"><img id="logo-navbar" src="@/assets/logo.png" alt="#"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation" style="user-select: auto;">
         <span class="navbar-toggler-icon" style="user-select: auto;"></span>
@@ -12,10 +12,18 @@
                   <router-link class="moj-nav-link" to="/">Početna</router-link>
               </button>
           </li>
-          <li class="nav-item" style="user-select: auto;">
-              <button class="btn">
+          <li class="nav-item text-center" style="user-select: auto;" @mouseover="mouseover" @mouseout="mouseout">
+            <div class="input-group mb-3">
+              <button class="btn dropdown-toggle" id="button-recepti" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <router-link class="moj-nav-link" to="#">Recepti</router-link>
               </button>
+              <ul class="dropdown-menu" id="dropdown-tipovi-jela">
+                <li><router-link class="moj-nav-link" to="#">Predjelo</router-link></li>
+                <li><router-link class="moj-nav-link" to="#">Glavno jelo</router-link></li>
+                <li><router-link class="moj-nav-link" to="#">Desert</router-link></li>
+                <li><router-link class="moj-nav-link" to="#">Užina</router-link></li>
+              </ul>
+            </div>
           </li>
           <li class="nav-item" style="user-select: auto;">
               <button class="btn">
@@ -48,6 +56,15 @@
 </template>
 
 <style>
+.navbar{
+  padding-left: 17%;
+  padding-right: 17%;
+  background-color: rgba(122, 62, 62, 0.7);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
 #logo-navbar{
   width: 50px;
   object-fit: contain;
@@ -60,6 +77,11 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+#dropdown-tipovi-jela{
+  background-color: rgba(122, 62, 62, 0.7);
+  z-index: 90;
+}
+
 #lista-jezik{
   width: 100px;
 }
@@ -70,6 +92,16 @@ export default {
   name: 'Header',
   components: {
     
+  },
+  methods:{
+    mouseover(){
+      $('#button-recepti').addClass('show').attr('aria-expanded', 'true');
+      $('#dropdown-tipovi-jela').addClass('show').attr('data-bs-popper', 'none');
+    },
+    mouseout(){
+      $('#button-recepti').removeClass('show').attr('aria-expanded', 'false');
+      $('#dropdown-tipovi-jela').removeClass('show').removeAttr('data-bs-popper');
+    }
   }
 }
 

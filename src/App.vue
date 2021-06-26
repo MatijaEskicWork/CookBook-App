@@ -1,11 +1,11 @@
 <template>
-  <div class="container-fluid">
-    <Header/>
+<Header/>
+  <div class="container">
     <div id="content">
       <router-view/>
     </div>
-    <Footer/>
   </div>
+<Footer/>
 </template>
 
 <style>
@@ -15,15 +15,15 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-image: url('./assets/background.jpg');
-  background-size: cover;
+  /*background-image: url('./assets/background.jpg');
+  background-size: auto;*/
   
 }
 
 #content{
   min-height: 90vh;
   margin-bottom: 10px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.0);
 }
 
 Footer{

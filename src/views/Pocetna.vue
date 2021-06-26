@@ -1,37 +1,59 @@
 <template>
   <div class="row">
     <div class="col">
-      <h2 id="top-3-recepta">Top 3 recepta</h2>
+      <!--<h2 id="top-3-recepta">Top 3 recepta</h2>-->
     </div>  
   </div>
   <div class="row">
     <div class="col-12">
-      Slideshow ne radi kako treba
-      <!--<SlideshowRecepti/>-->
+      <SlideshowRecepti/>
     </div>
+  </div>
+  <hr class="linija">
+  <div id="blogovi">
+    <h1 id="header-blogovi">Blogovi koje preporučujemo</h1>
+    <Blogovi/>
+  </div>
+  <hr class="linija">
+  <div id="kulinarski-kursevi">
+    <h1 id="header-kulinarski-kursevi">Kulinarski kursevi</h1>
+    <KursKuvanja/>
   </div>
 </template>
 
 <style>
 #top-3-recepta{
-  margin-top: 20px;
+  margin-top: 50px;
+  margin-bottom: 10px;
   text-align: center;
+  text-decoration: underline;
 }
-SlideshowRecepti{
-  width: 90%;
-  height: 50%;
-  object-fit: cover;
+#header-blogovi{
+  margin-top: 10vh;
+  margin-bottom: 5vh;
+}
+#header-kulinarski-kursevi{
+  margin-top: 10vh;
+  margin-bottom: 5vh;
+}
+
+.linija{
+  border: 1px dotted #ff0000;
 }
 </style>
 
 <script>
 
-//import SlideshowRecepti from '@/components/CarouselTop3Recepta.vue'
+import SlideshowRecepti from '@/components/CarouselTop3Recepta.vue'
+import Blogovi from '@/components/Blogovi.vue'
+import KursKuvanja from '@/components/KursKuvanja.vue'
 
 export default {
   name: 'Pocetna',
   components: {
-    //SlideshowRecepti
+    SlideshowRecepti,
+    Blogovi,
+    KursKuvanja
   },
   created(){
     document.title = 'Početna';

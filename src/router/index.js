@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Pocetna from '../views/Pocetna.vue'
+import MojNalog from '../views/MojNalog.vue'
 
 const routes = [
   {
@@ -7,6 +8,15 @@ const routes = [
     name: 'Pocetna',
     component: Pocetna
   },
+  {
+    path: '/nalog',
+    name: 'MojNalog',
+    component: MojNalog
+  },
+  /*{
+    path: '/recept/:id',
+    name: 'Recept'
+  },*/
   
 ]
 

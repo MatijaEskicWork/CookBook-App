@@ -32,7 +32,7 @@
           </li>
           <li class="nav-item" style="user-select: auto;">
               <button class="btn">
-                  <router-link class="moj-nav-link" to="#">Moj nalog</router-link>
+                  <router-link class="moj-nav-link" to="/nalog">Moj nalog</router-link>
               </button>
           </li>
           <li class="nav-item" style="user-select: auto;">

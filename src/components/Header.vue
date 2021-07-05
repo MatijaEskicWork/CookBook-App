@@ -18,10 +18,10 @@
                   <router-link class="moj-nav-link" to="#">Recepti</router-link>
               </button>
               <ul class="dropdown-menu" id="dropdown-tipovi-jela">
-                <li><router-link class="moj-nav-link" to="#">Predjelo</router-link></li>
-                <li><router-link class="moj-nav-link" to="#">Glavno jelo</router-link></li>
-                <li><router-link class="moj-nav-link" to="#">Desert</router-link></li>
-                <li><router-link class="moj-nav-link" to="#">Užina</router-link></li>
+                <li><router-link class="moj-nav-link" :to="'/predjela'">Predjelo</router-link></li>
+                <li><router-link class="moj-nav-link" :to="'/glavnaJela'">Glavno jelo</router-link></li>
+                <li><router-link class="moj-nav-link" :to="'/deserti'">Desert</router-link></li>
+                <li><router-link class="moj-nav-link" :to="'/uzine'">Užina</router-link></li>
               </ul>
             </div>
           </li>

@@ -10,7 +10,6 @@
         </div>
     </div>
 </template>
-
 <style>
     .kurs>img{
         max-width:100%;

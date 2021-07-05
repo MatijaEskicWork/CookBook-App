@@ -56,6 +56,22 @@ export default {
     KursKuvanja
   },
   created(){
+      localStorage.removeItem("listaRecepata");
+      if (localStorage.getItem("listaRecepata") == null) {
+            let recepti = [
+                {ime: "Recept1", 
+                  tezina:4.3, 
+                  ocena:4.3, 
+                  slika:"assets/recepti/musaka.jpg", 
+                  kratakOpis:"aaaaada asdsdasd sda as d sd s dsafjaf gsdjg", 
+                  tip:'glavno jelo'
+                }
+            ];
+            localStorage.setItem("listaRecepata", JSON.stringify(recepti));
+      }
+      else {
+
+      }
     document.title = 'Početna';
   }
 }

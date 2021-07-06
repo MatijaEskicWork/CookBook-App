@@ -19,6 +19,11 @@
     <h1 id="header-kulinarski-kursevi">Kulinarski kursevi</h1>
     <KursKuvanja/>
   </div>
+  <hr class="linija">
+  <div id="baneri">
+    <h1>Sponzori sajta</h1>
+    <Baneri/>
+  </div>
 </template>
 
 <style>
@@ -36,6 +41,10 @@
   margin-top: 10vh;
   margin-bottom: 5vh;
 }
+#baneri{
+  margin-top: 10vh;
+  margin-bottom: 5vh;
+}
 
 .linija{
   border: 1px dotted #ff0000;
@@ -47,13 +56,15 @@
 import SlideshowRecepti from '@/components/CarouselTop3Recepta.vue'
 import Blogovi from '@/components/Blogovi.vue'
 import KursKuvanja from '@/components/KursKuvanja.vue'
+import Baneri from '@/components/Baneri.vue'
 
 export default {
   name: 'Pocetna',
   components: {
     SlideshowRecepti,
     Blogovi,
-    KursKuvanja
+    KursKuvanja,
+    Baneri
   },
   created(){
       localStorage.removeItem("listaRecepata");
@@ -69,9 +80,7 @@ export default {
             ];
             localStorage.setItem("listaRecepata", JSON.stringify(recepti));
       }
-      else {
-
-      }
+      
     document.title = 'Početna';
   }
 }

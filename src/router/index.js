@@ -6,6 +6,7 @@ import Deserti from '../views/Deserti.vue'
 import Predjela from '../views/Predjela.vue'
 import GlavnaJela from '../views/GlavnaJela.vue'
 import Uzine from '../views/Uzine.vue'
+import Recept from '../views/Recept.vue'
 
 const routes = [
   {
@@ -18,11 +19,11 @@ const routes = [
     name: 'MojNalog',
     component: MojNalog
   },
-  /*{
+  {
     path: '/recept/:id',
-    name: 'Recept'
-  },*/
-
+    name: 'Recept',
+    component: Recept
+  },
   {
     path: '/recepti/:link',
     name: 'Recepti',

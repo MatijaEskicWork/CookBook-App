@@ -64,6 +64,7 @@ export default {
         }
     },
     created(){
+        document.title = 'Moj nalog'
         this.ucitajRecepte();
         this.ucitajKomentare();
         this.ucitajOcene();

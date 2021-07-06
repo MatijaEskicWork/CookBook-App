@@ -15,8 +15,8 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  /*background-image: url('./assets/background.jpg');
-  background-size: auto;*/
+  /*background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('./assets/background.jpg');
+  background-position: center top;*/
   
 }
 
@@ -29,6 +29,10 @@
 Footer{
   min-height: 50px;
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+hr {
+  border: 2px solid black;
 }
 
 </style>

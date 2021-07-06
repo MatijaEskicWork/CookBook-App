@@ -8,12 +8,12 @@
       <div class="navbar-collapse collapse show" id="navbarColor01" style="user-select: auto;">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="user-select: auto;">
           <li class="nav-item" style="user-select: auto;">
-              <button class="btn">
-                  <router-link class="moj-nav-link" to="/">Početna</router-link>
+              <button id="btn-pocetna" class="btn" >
+                  <router-link class="moj-nav-link"  to="/">Početna</router-link>
               </button>
           </li>
-          <li class="nav-item text-center" style="user-select: auto;" @mouseover="mouseover" @mouseout="mouseout">
-            <div class="input-group mb-3">
+          <li class="nav-item" style="user-select: auto;" @mouseover="mouseover" @mouseout="mouseout">
+            <div class="input-group">
               <button class="btn dropdown-toggle" id="button-recepti" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <router-link class="moj-nav-link" to="#">Recepti</router-link>
               </button>
@@ -31,12 +31,12 @@
               </button>
           </li>
           <li class="nav-item" style="user-select: auto;">
-              <button class="btn">
+              <button class="btn" id="button-moj-nalog">
                   <router-link class="moj-nav-link" to="/nalog">Moj nalog</router-link>
               </button>
           </li>
           <li class="nav-item" style="user-select: auto;">
-              <button class="btn">
+              <button class="btn" id="button-o-nama">
                   <router-link class="moj-nav-link" to="#">O nama</router-link>
               </button>
           </li>
@@ -67,7 +67,7 @@
 
 #logo-navbar{
   width: 50px;
-  object-fit: contain;
+  height: auto;
 }
 
 .moj-nav-link{
@@ -80,6 +80,10 @@
 #dropdown-tipovi-jela{
   background-color: rgba(122, 62, 62, 0.7);
   z-index: 90;
+}
+
+.nav-item{
+  margin: auto;
 }
 
 #lista-jezik{

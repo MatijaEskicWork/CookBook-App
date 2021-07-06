@@ -82,6 +82,16 @@ export default {
       }
       
     document.title = 'Početna';
+    
+  },
+  mounted()
+  {
+    // postavljanje aktivne klase
+    $(".btn.active").each(function(){
+      $(this).removeClass('active');
+    });
+    
+    $("#btn-pocetna").addClass('active');
   }
 }
 </script>

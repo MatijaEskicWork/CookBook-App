@@ -12,7 +12,8 @@
 </template>
 <style>
     .kurs>img{
-        max-width:100%;
+        width:90%;
+        height: fit-content;
     }
 
     .kurs>p, span{

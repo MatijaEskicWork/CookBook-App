@@ -7,6 +7,8 @@ import Predjela from '../views/Predjela.vue'
 import GlavnaJela from '../views/GlavnaJela.vue'
 import Uzine from '../views/Uzine.vue'
 import Recept from '../views/Recept.vue'
+import ONama from '../views/ONama.vue'
+import DodajRecept from '../views/DodajRecept.vue'
 
 const routes = [
   {
@@ -50,6 +52,16 @@ const routes = [
     path: '/uzine',
     name: 'Uzine',
     component: Uzine
+  },
+  {
+    path: '/dodajRecept',
+    name: 'DodajRecept',
+    component: DodajRecept
+  },
+  {
+    path: '/oNama',
+    name: 'OName',
+    component: ONama
   }
   
 ]

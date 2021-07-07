@@ -12,6 +12,7 @@
                     <div class="tezina">Tezina:&nbsp;&nbsp;<b>{{this.tezina}}/5.0</b></div> 
                     <br>
                     <div class="prikaziJos"><router-link class="linkStil" :to="'/'"><b>Prikaži još</b>&nbsp;<img class ="strelica" src="@/assets/ostaleSlike/arrow-right.svg" ></router-link></div>
+                    <div v-if="korisnikDodao" class="obrisi"><button @click="obrisi()" class="btn btn-danger"><b>Obriši</b></button></div>
                 </div>          
             </div>
         </div>
@@ -22,9 +23,10 @@
 .kartica {
     width:50%;
     margin: 20px;
-    padding: 10px;
+    margin-bottom: 30px;
+    /*padding: 10px;
     padding-left: 20px;
-    padding-bottom: 15px;
+    padding-bottom: 15px;*/
     background-color: #d6b7b5de;
 }
 
@@ -32,7 +34,14 @@
     display: flex;
 }
 
+.levoKartica{
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-right: 10px;
+}
+
 .naslovKartica {
+    padding-top: 2px;
     font-weight: bolder;
     font-size: 20px;
 }
@@ -55,7 +64,10 @@ height: 100px;
 .linkStil:hover, .linkStil:active{
     text-decoration: none;
     color:#662f2bde;
+}
 
+.centarKartica{
+    width:55%;
 }
 </style>
 
@@ -69,12 +81,13 @@ export default {
         ime: String,
         kratakOpis: String,
         slika: String,
-        tip: String
+        tip: String,
+        korisnikDodao: Boolean
     },
     data() {
 
         return{
-
+            
         }
     },
     methods: {

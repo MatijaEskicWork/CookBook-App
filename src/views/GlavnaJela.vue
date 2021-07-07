@@ -26,7 +26,7 @@
         </form>
     </div>
     <div v-for="recept in filterListe">
-        <recept-kartica v-if="recept.tip == this.tipRecepta" :tip="recept.tip" :ime="recept.ime" :tezina ="recept.tezina" :ocena="recept.ocena" :kratakOpis="recept.kratakOpis" :slika="recept.slika"></recept-kartica>
+        <recept-kartica v-if="recept.tip == this.tipRecepta" :korisnikDodao="recept.korisnikDodao" :tip="recept.tip" :ime="recept.ime" :tezina ="recept.tezina" :ocena="recept.ocena" :kratakOpis="recept.kratakOpis" :slika="recept.slika"></recept-kartica>
     </div>
     
 </template>
@@ -101,7 +101,8 @@ export default {
         this.ucitajPodatke();
         //this.recepti = JSON.parse(localStorage.getItem('recepti'));
         this.listaRecepata = JSON.parse(localStorage.getItem("listaRecepata"));
-        this.filtriranaLista = this.listaRecepata;
+        this.filtriranaLista = this.listaRecepata;  
+        this.listaRecepata.forEach(el=> {alert(el.ime);});
         document.title = 'Recepti';
     },
     methods: {
@@ -145,6 +146,7 @@ export default {
             if (this.filter != 'none' && this.filter != '') {
                 this.filtriranaLista = this.sortiraj();
             }
+            
             if (this.pretragaTekst != '') {
                 this.filtriranaLista = this.filtriraj();
             }

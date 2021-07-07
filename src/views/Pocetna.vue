@@ -75,7 +75,8 @@ export default {
                   ocena:4.3, 
                   slika:"assets/recepti/musaka.jpg", 
                   kratakOpis:"aaaaada asdsdasd sda as d sd s dsafjaf gsdjg", 
-                  tip:'glavno jelo'
+                  tip:'glavno jelo',
+                  korisnikDodao: false
                 }
             ];
             localStorage.setItem("listaRecepata", JSON.stringify(recepti));

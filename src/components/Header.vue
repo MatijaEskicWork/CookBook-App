@@ -27,7 +27,7 @@
           </li>
           <li class="nav-item" style="user-select: auto;">
               <button class="btn">
-                  <router-link class="moj-nav-link" to="#">Dodaj recept</router-link>
+                  <router-link class="moj-nav-link" to="/dodajRecept">Dodaj recept</router-link>
               </button>
           </li>
           <li class="nav-item" style="user-select: auto;">
@@ -37,7 +37,7 @@
           </li>
           <li class="nav-item" style="user-select: auto;">
               <button class="btn" id="button-o-nama">
-                  <router-link class="moj-nav-link" to="#">O nama</router-link>
+                  <router-link class="moj-nav-link" to="/oNama">O nama</router-link>
               </button>
           </li>
         </ul>

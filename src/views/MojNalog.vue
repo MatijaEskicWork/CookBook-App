@@ -95,6 +95,10 @@ export default {
         this.ucitajOcene();
         //this.popuniStranicu();
     },
+    mounted()
+    {
+        //this.busEvent.emit('promeniAktivanTab', 'mojNalog');
+    },
     methods: {
         ucitajRecepte(){
             if(localStorage.getItem('mojiRecepti') == null)

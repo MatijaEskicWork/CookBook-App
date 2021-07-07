@@ -8,7 +8,7 @@
       <div class="navbar-collapse collapse show" id="navbarColor01" style="user-select: auto;">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="user-select: auto;">
           <li class="nav-item" style="user-select: auto;">
-              <button id="btn-pocetna" class="btn" >
+              <button id="btn-pocetna" class="btn" active="true">
                   <router-link class="moj-nav-link"  to="/">Početna</router-link>
               </button>
           </li>
@@ -89,13 +89,26 @@
 #lista-jezik{
   width: 100px;
 }
+
+.btn:active{
+  background-color: black;
+}
+
+.aktivan-tab{
+  background-color: black;
+}
 </style>
 
 <script>
+
 export default {
+
   name: 'Header',
-  components: {
-    
+  data()
+  {
+    return{
+      aktivanTab:''
+    }
   },
   methods:{
     mouseover(){
@@ -106,6 +119,26 @@ export default {
       $('#button-recepti').removeClass('show').attr('aria-expanded', 'false');
       $('#dropdown-tipovi-jela').removeClass('show').removeAttr('data-bs-popper');
     }
+  },
+  mounted()
+  {
+    /*this.eventBus.on('promeniAktivanTab', (aktivanTab) => {
+      
+      let stariAktivan = $(".aktivan-tab");
+      stariAktivan.removeClass('aktivan-tab');
+
+      switch(aktivanTab)
+      {
+        case 'pocetna':
+        {
+          $("#btn-pocetna").addClass('aktivan-tab');
+        }
+        case 'mojNalog':
+        {
+          $("#button-moj-nalog").addClass('aktivan-tab');  
+        }
+      }
+    });*/
   }
 }
 

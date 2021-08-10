@@ -86,15 +86,61 @@ export default {
                     slika:'assets/recepti/musaka.jpg',
                     kratakOpis:skracenoUputstvo,
                     tip:this.grupaRecepta,
+                    trajanje: 45,
                     korisnikDodao:true
                 }
                 this.listaRecepata.push(recept);
                 localStorage.setItem("listaRecepata", JSON.stringify(this.listaRecepata));
+                this.sinhronizujRecepte(recept); // Dodaj recept i u niz mojih recepata (Nemanja)
                 this.greska='';
                 this.listaRecepata.forEach(el=> {alert(el.ime);});
             }
             else this.greska = 'Neuspešno ste uneli podatke.';
             this.listaRecepata.forEach(el=> {alert(el.ime);});
+        },
+        sinhronizujRecepte(recept) // Metoda za dupliranje recepta u niz recepata - NEMANJA
+        {
+            let receptiLocalStorage = [];
+            if(localStorage.getItem('recepti') == null)
+            {
+                localStorage.setItem('recepti', JSON.stringify(receptiLocalStorage));
+            }
+            else
+                receptiLocalStorage = JSON.parse(localStorage.getItem('recepti'));
+            
+            let idRecepta = receptiLocalStorage[receptiLocalStorage.length - 1].id + 1;
+
+            let noviRecept = {
+                id: idRecepta,
+                komentari: [],
+                naziv: recept.ime,
+                ocene: recept.ocena,
+                priprema: recept.kratakOpis,
+                slike: [],
+                tezina: recept.tezina,
+                trajanje: recept.trajanje,
+                videoUrl: 'https://www.youtube.com/watch?v=tGFp1wJrjuI'
+            }
+
+            receptiLocalStorage.push(noviRecept);
+            localStorage.setItem('recepti', JSON.stringify(receptiLocalStorage));
+
+            // dodavanje u mojiRecepti u LocalStorage
+            let noviMojRecept = {
+                id: noviRecept.id,
+                naziv: noviRecept.naziv
+            }
+
+            let mojiReceptiLocalStorage = [];
+            if(localStorage.getItem('mojiRecepti') == null)
+            {
+                localStorage.setItem('mojiRecepti', JSON.stringify(mojiReceptiLocalStorage));
+            }
+            else
+                mojiReceptiLocalStorage = JSON.parse(localStorage.getItem('mojiRecepti'));
+
+            mojiReceptiLocalStorage.push(noviMojRecept);
+            localStorage.setItem('mojiRecepti', JSON.stringify(mojiReceptiLocalStorage));
         }
     }
 }

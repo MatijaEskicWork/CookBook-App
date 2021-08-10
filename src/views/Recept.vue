@@ -29,7 +29,7 @@
                     <button class="btn btn-outline-secondary" id="dugme-pdf" @click="skiniPDF()">Sacuvaj recept</button>      
                 </div>
                 <div class="col-lg-6 col-12">
-                    <div id="carouselSlikeRecepta h-100" class="carousel slide" data-ride="carousel" data-bs-interval="2000">
+                    <div id="carouselSlikeRecepta h-100" class="carousel slide">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                             <img class="d-block w-100" :src="dohvatiSliku(mojRecept.slike[0])" alt="First slide">
@@ -353,6 +353,12 @@ export default {
         this.ucitajMojeKomentare();
         this.ucitajMojeOcene();
 
+    },
+    mounted(){
+        /*$('.carousel').carousel('cycle');
+        $('.carousel').carousel({
+            pause: false
+        });*/
     }
 }
 </script>

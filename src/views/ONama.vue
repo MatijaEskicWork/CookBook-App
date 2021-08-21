@@ -7,7 +7,7 @@
         <div class="informacije">Ovaj sajt je napravljen sa željom da ljudi međusobno dele recepte, pronađu recepte za nova 
             i ukusna jela koja će im dane učiniti zanimljivim, a život zdravijim i uzbudljivim. Znate kako se govori da žeiš biti
             najbolji u onome što radiš, moraš pre svega da voliš i uživaš u tome. Naš moto je malo drugačiji:"Da bi bio najbolji,
-            moraž da jedeš ono što voliš i u čemu uživaš". To nam je i bila misija, da podstaknemo ljude, mlade i stare, muškarce
+            moraš da jedeš ono što voliš i u čemu uživaš". To nam je i bila misija, da podstaknemo ljude, mlade i stare, muškarce
             i žene, da jedu domaću hranu i da se hrane zdravije. Mislim da smo u tome i uspeli, a o tome govore brojne nagrade koje smo
             osvojili: - "Najbolji sajt sa kuvarskom tematikom" za Jugoistočnu Evropu, osvojena tri puta zaredom(2018,2019,2020)
                       - "Medalja za podsticaj Srbije na zdrav život" dobijena 2019. godine,

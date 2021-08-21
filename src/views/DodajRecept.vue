@@ -8,7 +8,7 @@
             <div>
                 <label for="grupaRecepta">Grupa recepta:</label>
                 <select name="grupaRecepta" id="grupaRecepta" v-model="grupaRecepta">
-                    <option value="predjelo">Predjel</option>
+                    <option value="predjelo">Predjelo</option>
                     <option value="glavno jelo">Glavno jelo</option>
                     <option value="desert">Desert</option>
                     <option value="uzina">Uzina</option>
@@ -28,7 +28,7 @@
                 <label for="tezinaSpremanja">Tezina spremanja recepta(0-5):</label>
                 <input type="number" step="0.2" v-model="tezinaSpremanja">
             </div>
-            <span class="greska">{{greska}}</span>
+            <span class="greska">{{this.greska}}</span>
             <div>
                 <button @click="dodaj()" type="button">Dodaj recept</button>
             </div>
@@ -54,7 +54,9 @@ export default {
              duzinaSpremanja:0,
              tezinaSpremanja:0,
              listaRecepata:[],
-             greska:''
+             greska:'',
+             minDuzinaImena:8,
+             minDuzinaUputstva:100
          }
      },
     created(){
@@ -65,37 +67,71 @@ export default {
     },
     methods: {
         proveriGreske(){
+            if (this.imeRecepta.length < this.minDuzinaImena){
+                this.greska = 'Prekratko ime recepta. Ime recepta mora da sadrži barem 8 karaktera.';
+                return false;
+            }
+            if (this.grupaRecepta == null || this.grupaRecepta == ''){
+                this.greska = 'Niste odabrali kojoj grupi recepata pripada recept koji dodajete.';
+                return false;
+            }
+            if (this.uputstvo < this.minDuzinaUputstva){
+                this.greska = 'Prekratko uputstvo recepta. Uputstvo recepta mora da sadrži barem 100 karaktera.';
+                return false;
+            }
+            if (this.duzinaSpremanja <= 0.0) {
+                this.greska = 'Priprema recepta ne može da traje nula ili manje minuta.';
+                return false;
+            }
+            if (this.tezinaSpremanja <= 0.0) {
+                this.greska = 'Tezina pripremanja recepta ne može da bude nula ili manje.';
+                return false;
+            }
             return true;
         },
+
+        proveriSlicnost() {
+            this.listaRecepata = JSON.parse(localStorage.getItem("listaRecepata"));
+            for (let i = 0; i < this.listaRecepata.length; i++) {
+                if (this.listaRecepata[i].ime == this.imeRecepta) {
+                    this.greska = 'Recept koji pokušavate da dodate već postoji.';
+                }
+            }
+            
+            return true
+        },
+
         dodaj() {
             if (this.proveriGreske()) {
-                let skracenoUputstvo ="";
-                let duzina = 40;
-                if (duzina > this.uputstvo.length) {
-                    duzina = this.uputstvo.length;
-                }
-                alert("Prosao ovaj deo");
-                skracenoUputstvo = this.uputstvo.slice(0, duzina);
-                alert("Dodato uputstvo skracenom");
+                if (this.proveriSlicnost()) {
+                    let skracenoUputstvo ="";
+                    let duzina = 40;
+                    if (duzina > this.uputstvo.length) {
+                        duzina = this.uputstvo.length;
+                    }
+                    alert("Prosao ovaj deo");
+                    skracenoUputstvo = this.uputstvo.slice(0, duzina);
+                    alert("Dodato uputstvo skracenom");
 
 
-                let recept = {
-                    ime:this.imeRecepta,
-                    tezina:this.tezinaSpremanja,
-                    ocena:5.0,
-                    slika:'assets/recepti/musaka.jpg',
-                    kratakOpis:skracenoUputstvo,
-                    tip:this.grupaRecepta,
-                    trajanje: 45,
-                    korisnikDodao:true
+                    let recept = {
+                        ime:this.imeRecepta,
+                        tezina:this.tezinaSpremanja,
+                        ocena:5.0,
+                        slika:'assets/recepti/musaka.jpg',
+                        kratakOpis:skracenoUputstvo,
+                        tip:this.grupaRecepta,
+                        trajanje: 45,
+                        korisnikDodao:true
+                    }
+                    this.listaRecepata.push(recept);
+                    localStorage.setItem("listaRecepata", JSON.stringify(this.listaRecepata));
+                    this.sinhronizujRecepte(recept); // Dodaj recept i u niz mojih recepata (Nemanja)
+                    this.greska='';
+                    this.listaRecepata.forEach(el=> {alert(el.ime);});
+                    this.greska = '';
                 }
-                this.listaRecepata.push(recept);
-                localStorage.setItem("listaRecepata", JSON.stringify(this.listaRecepata));
-                this.sinhronizujRecepte(recept); // Dodaj recept i u niz mojih recepata (Nemanja)
-                this.greska='';
-                this.listaRecepata.forEach(el=> {alert(el.ime);});
             }
-            else this.greska = 'Neuspešno ste uneli podatke.';
             this.listaRecepata.forEach(el=> {alert(el.ime);});
         },
         sinhronizujRecepte(recept) // Metoda za dupliranje recepta u niz recepata - NEMANJA

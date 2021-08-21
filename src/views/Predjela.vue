@@ -26,7 +26,7 @@
         </form>
     </div>
     <div v-for="recept in filterListe">
-        <recept-kartica v-if="recept.tip == this.tipRecepta" :korisnikDodao="recept.korisnikDodao" :tip="recept.tip" :ime="recept.ime" :tezina ="recept.tezina" :ocena="recept.ocena" :kratakOpis="recept.kratakOpis" :slika="recept.slika"></recept-kartica>
+        <recept-kartica v-if="recept.tip == this.tipRecepta" :korisnikDodao="recept.korisnikDodao" :tip="recept.tip" :ime="recept.ime" :tezina ="recept.tezina" :ocena="recept.ocena" :kratakOpis="recept.kratakOpis" :slika="recept.slika" :trajanje="recept.trajanje" :opisJela="recept.opisJela"></recept-kartica>
     </div>
     
 </template>
@@ -114,22 +114,22 @@ export default {
         sortiraj() {
             let lst = this.filtriranaLista;
             if (this.filter == 'tr') {
-                return lst.items.sort(function(a,b) {
+                return lst.sort(function(a,b) {
                     return a.tezina - b.tezina;
                 });
             }
             else if (this.filter == 'to') {
-                return lst.items.sort(function(a,b) {
+                return lst.sort(function(a,b) {
                     return b.tezina - a.tezina;
                 });
             }
             else if (this.filter == 'or') {
-                return lst.items.sort(function(a,b) {
+                return lst.sort(function(a,b) {
                     return a.ocena - b.ocena;
                 });
             }
             else if (this.filter == 'oo') {
-                return lst.items.sort(function(a,b) {
+                return lst.sort(function(a,b) {
                     return b.ocena - a.ocena;
                 });
             }
@@ -139,7 +139,7 @@ export default {
             if (this.filter != 'none' && this.filter != '') {
                 this.filtriranaLista = this.sortiraj();
             }
-            if (this.pretragaTekst != '') {
+            if (this.pretragaTekst != '' && this.pretragaTekst != null) {
                 this.filtriranaLista = this.filtriraj();
             }
         }

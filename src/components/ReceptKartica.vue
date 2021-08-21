@@ -5,14 +5,18 @@
             <div class="informacijeKartica">
                 <div class="levoKartica"><img class="karticaSlika" :src="require('@/' + this.slika)" alt=""></div> 
                 <div class="centarKartica">
-                    {{this.kratakOpis}}...
+                    {{this.kratakOpisJela}}...
                 </div>
                 <div class="desnoKartica">
                     <div class="ocena">Ocena:&nbsp;&nbsp;<b>{{this.ocena}}/5.0</b></div>
                     <div class="tezina">Tezina:&nbsp;&nbsp;<b>{{this.tezina}}/5.0</b></div> 
+                    <div class="trajanje">Trajanje:&nbsp;&nbsp;<b>{{this.trajanje}}min</b></div>
                     <br>
                     <div class="prikaziJos"><router-link class="linkStil" :to="'/'"><b>Prikaži još</b>&nbsp;<img class ="strelica" src="@/assets/ostaleSlike/arrow-right.svg" ></router-link></div>
-                    <div v-if="korisnikDodao" class="obrisi"><button @click="obrisi()" class="btn btn-danger"><b>Obriši</b></button></div>
+                    <div class="obrisi"><button @click="obrisi()" class="btn btn-danger"><b>Obriši</b></button></div>
+                    <!-- OVAKO TREBA, KAO OVO ISPOD, OVO IZNAD RADI LAKSEG TESTIRANJA 
+                    <div  v-if="korisnikDodao" class="obrisi"><button @click="obrisi()" class="btn btn-danger"><b>Obriši</b></button></div>
+                    -->
                 </div>          
             </div>
         </div>
@@ -82,19 +86,33 @@ export default {
         kratakOpis: String,
         slika: String,
         tip: String,
-        korisnikDodao: Boolean
+        korisnikDodao: Boolean,
+        trajanje:Number,
+        opisJela:String
     },
     data() {
 
         return{
-            
+            listaRecepata: [],
+            obrisan: false,
+            kratakOpisJela:''
         }
     },
     methods: {
-
+        obrisi() {
+            this.listaRecepata = JSON.parse(localStorage.getItem("listaRecepata")) 
+            for(let i = 0; i < this.listaRecepata.length; i++) {
+                if (this.listaRecepata[i].ime == this.ime) {
+                    this.listaRecepata.splice(i, 1)
+                    break;
+                }
+            }
+            localStorage.setItem("listaRecepata", JSON.stringify(this.listaRecepata))
+            this.obrisan = true
+        }
     },
     created() {
-        //alert(this.slika);
+        this.kratakOpisJela = this.opisJela.slice(0,150);
     }
 
 }

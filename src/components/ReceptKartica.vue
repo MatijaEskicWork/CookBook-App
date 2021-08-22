@@ -3,7 +3,7 @@
         <div class="kartica">
             <div class="naslovKartica">{{this.ime}}</div>
             <div class="informacijeKartica">
-                <div class="levoKartica"><img class="karticaSlika" :src="require('@/' + this.slika)" alt=""></div> 
+                <div class="levoKartica"><img class="karticaSlika" :src="require('../assets/recepti/' + this.id + '/' + '1.jpg')" alt=""></div> <!-- Bilo je  require('@/' + this.slika) -->
                 <div class="centarKartica">
                     {{this.kratakOpisJela}}...
                 </div>
@@ -80,6 +80,7 @@ height: 100px;
 export default {
     name: 'ReceptKartica',
     props: {
+        id: Number,
         ocena: Number,
         tezina: Number,
         ime: String,

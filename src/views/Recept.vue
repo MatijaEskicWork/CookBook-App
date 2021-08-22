@@ -33,13 +33,7 @@
                     <div id="carouselSlikeRecepta h-100" class="carousel slide">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block w-100" :src="dohvatiSliku(mojRecept.slike[0])" alt="First slide">
-                            </div>
-                            <div class="carousel-item">
-                            <img class="d-block w-100" :src="dohvatiSliku(mojRecept.slike[1])" alt="Second slide">
-                            </div>
-                            <div class="carousel-item">
-                            <img class="d-block w-100" :src="dohvatiSliku(mojRecept.slike[2])" alt="Third slide">
+                            <img class="d-block w-100" :src="dohvatiSliku('1.jpg')" alt="First slide">
                             </div>
                         </div>
                     </div>
@@ -309,7 +303,7 @@ export default {
         },
         dohvatiSliku(img)
         {
-            return require('../assets/recepti/' + this.$route.params.id + '/' + img);
+            return require('../assets/recepti/' + this.$route.params.id + '/' + 1);
         },
         unesiOcenu()
         {

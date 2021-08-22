@@ -1,4 +1,5 @@
 <template>
+<Header></Header>
     <div class="row">
         <div class="col-12">
             <h1 class="naslov-moj-nalog">Moji recepti</h1>
@@ -59,6 +60,7 @@
             </table>
         </div>
     </div>
+    <Footer></Footer>
 </template>
 
 <style>
@@ -79,7 +81,13 @@
 </style>
 
 <script>
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
 export default {
+    components:{
+        Header,
+        Footer
+    },
     name: 'MojNalog',
     data() {
         return{

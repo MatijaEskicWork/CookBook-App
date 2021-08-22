@@ -1,12 +1,9 @@
 <template>
-
-  <Header/>
     <div class="container">
       <div id="content">
         <router-view/>
       </div>
     </div>
-  <Footer/>
 
 </template>
 

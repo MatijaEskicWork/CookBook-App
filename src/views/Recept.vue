@@ -1,4 +1,5 @@
 <template>
+<Header></Header>
     <div>
         <div class="glavno">
             <div class="row">
@@ -103,6 +104,7 @@
             </div>
         </div>
     </div> 
+    <Footer></Footer>
 </template>
 
 <style>
@@ -187,8 +189,16 @@
 
 <script>
 import jsPDF from 'jspdf'
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
+
+
 
 export default {
+    components:{
+        Header,
+    Footer,
+    },
     name: 'Recept',
     data(){
         return{

@@ -1,4 +1,5 @@
 <template>
+<Header/>
   <div class="row">
     <div class="col">
       <!--<h2 id="top-3-recepta">Top 3 recepta</h2>-->
@@ -24,6 +25,7 @@
     <h1>Sponzori sajta</h1>
     <Baneri/>
   </div>
+  <Footer></Footer>
 </template>
 
 <style>
@@ -57,10 +59,14 @@ import SlideshowRecepti from '@/components/CarouselTop3Recepta.vue'
 import Blogovi from '@/components/Blogovi.vue'
 import KursKuvanja from '@/components/KursKuvanja.vue'
 import Baneri from '@/components/Baneri.vue'
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'Pocetna',
   components: {
+    Header,
+    Footer,
     SlideshowRecepti,
     Blogovi,
     KursKuvanja,
@@ -106,6 +112,42 @@ export default {
           obrisan: false,
           trajanje:25,
           opisJela: "No need to buy salsa from the store ever again: This easy red salsa recipe is about to be your new go-to snack. Bright, fresh, and loaded with flavor, you'll want to load up on chips to serve this dip at every party (did someone say Cinco de Mayo?). Our (vegan!) salsa takes advantage of fresh tomatoes, spicy jalapeños, and plenty of cilantro for bold flavor. Top tip: Marinating the onions and jalapeños in lime juice will tame the raw bite while still keeping all of the taste that you love about these slightly spicy ingredients."
+        },
+        {ime: "Rendani tofu 'Ćorizo' takos", 
+            tezina:3.0, 
+            ocena:0.0, 
+            slika:"assets/recepti/glavnaJela/rendanitofu1.jpg", 
+            kratakOpis:'<b>INGREDIENTS</b> <br/>For the cashew cream:<br/>-50 g cashews <br/>1/2 tsp. apple cider vinegar<br/>For the avocado cream:<br/>-2 small avocados, peeled and stoned<br/>juice 1 lime<br/>For the salsa(Pico de Gallo)<br/>150 g cherry tomatoes, roughly chopped<br/>1/2 of red onion, finely chopped<br/>-small handful coriander, finely chopped<br/>-juice 1 lime<br/>For the "Chorizo" filling<br/>-450 g extra firm tofu, we used The Tofoo Co.<br/>-1 tsp. dried oregano <br/>-1 tsp. ground coriander<br/>-1 tsp. paprika<br/>-1 tbsp. ground cumin<br/>-1/4 tsp. ground cloves<br/>-1 tsp. sugar<br/>-1 tsp. soy sauce<br/>-1/2 tsp. chipotle paste<br/>-3 tsp. vegetable oil<br/>-300 g chestnut mushrooms, finely chopped<br/>To serve:<br/>-12 corn tortillas, we used Cool Chile Company<br/><b>DIRECTIONS</b><br/>For the cashew cream, put the cashews into a small pan; cover with water. Bring to boil and simmer for 10min, until tender. Drain well, then blend in a high-speed blender with 70ml water and the apple cider vinegar until smooth. Set aside.<br/>For the avocado cream, whizz avocados, lime juice and some salt in the blender, until smooth and thick. Alternatively, mash the ingredients together in a bowl until smooth. Chill until needed.<br/>For the salsa, mix all the ingredients in a small bowl with some seasoning. Chill until needed.<br/>Next, make the filling. Coarsely grate the tofu, then dab with kitchen paper to dry. In a small bowl, mix the dried herbs and spices, sugar, soy sauce, chipotle paste and 4tbsp water.<br/>Heat 1tsp oil in a large non-stick frying pan over high heat. Add the mushrooms and fry until they start to brown and any moisture has evaporated, about 5-8min. Empty on to a plate. Add remaining oil to the pan and when hot, add the grated tofu. Fry for 8-10min, stirring occasionally, until starting to crisp up. Return mushrooms to the pan along with the spice mix. Cook for 2min.<br/>Meanwhile, lightly toast each tortilla in a hot, dry frying pan for about 20sec per side. Keep covered until ready to serve.<br/>To serve, spread each tortilla with a little avocado cream, top with ‘chorizo’ and salsa, and drizzle over cashew cream.', 
+            tip:'glavno jelo',
+            korisnikDodao: false,
+            obrisan: false,
+            trajanje:75,
+            opisJela: "Grating the tofu allows it to crisp up in the pan quickly, while the mushrooms and spices give it a meaty flavour reminiscent of chorizo."
+          },
+        {
+          ime: "Fajita traybake",
+          tezina: 3.3,
+          ocena: 0.0,
+          slika: "assets/recepti/glavnaJela/fahita1.jpg",
+          kratakOpis: "<b>INGREDIENTS</b><br/>-400 g beef rump steaks, about 2, excess fat trimmed<br/>-1 tbsp. sweet smoked paprika<br/>-2 tsp. ground cumin<br/>-1 tsp. garlic powder/granules<br/>-ground coriander<br/>-juice 2 limes<br/>-2 onions, finely sliced<br/>-2 mixed-colour peppers, deseeded and finely sliced<br/>-2 tbsp. vegetable oil<br/>-4 large ripe tomatoes, roughly chopped<br/>-2 g pouches microwave brown basmati rice<br/>-2 tbsp. soured cream<br/>-large handful coriander roughly chopped, to serve<br/><b>DIRECTIONS<b/><br>Slice the beef across the grain into 3⁄4cm-thick strips and mix in a non-metallic bowl with the spices, lime juice and 1tsp fine salt. Cover and chill for at least 30min (up to 6hr).<br/>Preheat oven to 200°C (180°C fan) mark 6. In a large roasting tin or ovenproof serving dish, mix the onions, peppers, oil and plenty of seasoning and cook in oven for 15min, until starting to soften. Stir in marinated beef and tomatoes, spreading to level. Return to oven for 15min.<br/>Remove tin/dish from oven and stir through the rice,breaking up any clumps with a fork. Return to oven for 5-10min, until rice is piping hot. Dollop over soured cream and sprinkle over coriander to serve.",
+          tip:'glavno jelo',
+          korisnikDodao: false,
+          obrisan: false,
+          trajanje:60,
+          opisJela: "Easy and healthy Mexican main dish for lunch or dinner. It will make your day fullfiled.If you don’t fancy rice, serve inside warm wholemeal tortillas instead."
+        },
+        {
+          ime: "Curried baked beans",
+          tezina: 3.5,
+          ocena: 0.0,
+          slika: "assets/recepti/glavnaJela/karipecenipasulj1.jpg",
+          /*treba dodati opis*/
+          kratakOpis: "<b>INGREDIENTS</b><br/>-1 onion, finely chopped<br/>-2 tsp. olive oil<br/>-2 tbsp. medium curry powder<br/>2 g tins haricot beans, drained and rinsed<br/>-2 g tins chopped tomatoes<br/>-1 tsp. caster sugar<br/>-4 medium eggs<br/>-4 slices sourdough bread, toasted<br/>-4 tbsp. mango chutney<br/>-large handful coriander, roughly chopped, to serve<br/><b>DIRECTIONS<b/><br>Preheat oven to 200°C (180°C fan) mark 6. In a large roasting tin, mix onion, oil and curry powder. Roast for 15min, until onion has started to soften. Stir through beans, tomatoes, sugar and plenty of seasoning. Return to oven for 30min, stirring occasionally, until sauce is bubbling and has thickened slightly.<br/>When the beans are nearly ready, poach the eggs. Bring a large deep pan of water to the boil, then reduce to a simmer. Crack an egg into a ramekin or coffee cup, then neatly pour the egg into the simmering water. Working quickly, add a further 3 eggs in a similar fashion. Poach for 4min, or until, when lifted out with a slotted spoon, the whites feel firm but the yolks remain soft. Lift eggs out with a slotted spoon and drain on kitchen paper.<br/>Spread the mango chutney over the toasted sourdough. Top with beans, poached egg and a sprinkling of coriander. Serve.",
+          tip:'glavno jelo',
+          korisnikDodao: false,
+          obrisan: false,
+          trajanje:70,
+          opisJela: "A recipe that’s easily scalable or divisible. Would make a delicious brunch too.Swap the haricot for mixed beans, if you like. Garnish with finely chopped red chilli if you fancy something a little spicier."
         }
       ];
 
@@ -145,9 +187,48 @@ export default {
           obrisan: false,
           trajanje:25,
           opisJela: "No need to buy salsa from the store ever again: This easy red salsa recipe is about to be your new go-to snack. Bright, fresh, and loaded with flavor, you'll want to load up on chips to serve this dip at every party (did someone say Cinco de Mayo?). Our (vegan!) salsa takes advantage of fresh tomatoes, spicy jalapeños, and plenty of cilantro for bold flavor. Top tip: Marinating the onions and jalapeños in lime juice will tame the raw bite while still keeping all of the taste that you love about these slightly spicy ingredients."
+        },
+        {ime: "Rendani tofu 'Ćorizo' takos", 
+            tezina:3.0, 
+            ocena:0.0, 
+            slika:"assets/recepti/glavnaJela/rendanitofu1.jpg", 
+            kratakOpis:'<b>INGREDIENTS</b> <br/>For the cashew cream:<br/>-50 g cashews <br/>1/2 tsp. apple cider vinegar<br/>For the avocado cream:<br/>-2 small avocados, peeled and stoned<br/>juice 1 lime<br/>For the salsa(Pico de Gallo)<br/>150 g cherry tomatoes, roughly chopped<br/>1/2 of red onion, finely chopped<br/>-small handful coriander, finely chopped<br/>-juice 1 lime<br/>For the "Chorizo" filling<br/>-450 g extra firm tofu, we used The Tofoo Co.<br/>-1 tsp. dried oregano <br/>-1 tsp. ground coriander<br/>-1 tsp. paprika<br/>-1 tbsp. ground cumin<br/>-1/4 tsp. ground cloves<br/>-1 tsp. sugar<br/>-1 tsp. soy sauce<br/>-1/2 tsp. chipotle paste<br/>-3 tsp. vegetable oil<br/>-300 g chestnut mushrooms, finely chopped<br/>To serve:<br/>-12 corn tortillas, we used Cool Chile Company<br/><b>DIRECTIONS</b><br/>For the cashew cream, put the cashews into a small pan; cover with water. Bring to boil and simmer for 10min, until tender. Drain well, then blend in a high-speed blender with 70ml water and the apple cider vinegar until smooth. Set aside.<br/>For the avocado cream, whizz avocados, lime juice and some salt in the blender, until smooth and thick. Alternatively, mash the ingredients together in a bowl until smooth. Chill until needed.<br/>For the salsa, mix all the ingredients in a small bowl with some seasoning. Chill until needed.<br/>Next, make the filling. Coarsely grate the tofu, then dab with kitchen paper to dry. In a small bowl, mix the dried herbs and spices, sugar, soy sauce, chipotle paste and 4tbsp water.<br/>Heat 1tsp oil in a large non-stick frying pan over high heat. Add the mushrooms and fry until they start to brown and any moisture has evaporated, about 5-8min. Empty on to a plate. Add remaining oil to the pan and when hot, add the grated tofu. Fry for 8-10min, stirring occasionally, until starting to crisp up. Return mushrooms to the pan along with the spice mix. Cook for 2min.<br/>Meanwhile, lightly toast each tortilla in a hot, dry frying pan for about 20sec per side. Keep covered until ready to serve.<br/>To serve, spread each tortilla with a little avocado cream, top with ‘chorizo’ and salsa, and drizzle over cashew cream.', 
+            tip:'glavno jelo',
+            korisnikDodao: false,
+            obrisan: false,
+            trajanje:75,
+            opisJela: "Grating the tofu allows it to crisp up in the pan quickly, while the mushrooms and spices give it a meaty flavour reminiscent of chorizo."
+          },
+        {
+          ime: "Fajita traybake",
+          tezina: 3.3,
+          ocena: 0.0,
+          slika: "assets/recepti/glavnaJela/fahita1.jpg",
+          kratakOpis: "<b>INGREDIENTS</b><br/>-400 g beef rump steaks, about 2, excess fat trimmed<br/>-1 tbsp. sweet smoked paprika<br/>-2 tsp. ground cumin<br/>-1 tsp. garlic powder/granules<br/>-ground coriander<br/>-juice 2 limes<br/>-2 onions, finely sliced<br/>-2 mixed-colour peppers, deseeded and finely sliced<br/>-2 tbsp. vegetable oil<br/>-4 large ripe tomatoes, roughly chopped<br/>-2 g pouches microwave brown basmati rice<br/>-2 tbsp. soured cream<br/>-large handful coriander roughly chopped, to serve<br/><b>DIRECTIONS<b/><br>Slice the beef across the grain into 3⁄4cm-thick strips and mix in a non-metallic bowl with the spices, lime juice and 1tsp fine salt. Cover and chill for at least 30min (up to 6hr).<br/>Preheat oven to 200°C (180°C fan) mark 6. In a large roasting tin or ovenproof serving dish, mix the onions, peppers, oil and plenty of seasoning and cook in oven for 15min, until starting to soften. Stir in marinated beef and tomatoes, spreading to level. Return to oven for 15min.<br/>Remove tin/dish from oven and stir through the rice,breaking up any clumps with a fork. Return to oven for 5-10min, until rice is piping hot. Dollop over soured cream and sprinkle over coriander to serve.",
+          tip:'glavno jelo',
+          korisnikDodao: false,
+          obrisan: false,
+          trajanje:60,
+          opisJela: "Easy and healthy Mexican main dish for lunch or dinner. It will make your day fullfiled.If you don’t fancy rice, serve inside warm wholemeal tortillas instead."
+        },
+        {
+          ime: "Curried baked beans",
+          tezina: 3.5,
+          ocena: 0.0,
+          slika: "assets/recepti/glavnaJela/karipecenipasulj1.jpg",
+          /*treba dodati opis*/
+          kratakOpis: "<b>INGREDIENTS</b><br/>-1 onion, finely chopped<br/>-2 tsp. olive oil<br/>-2 tbsp. medium curry powder<br/>2 g tins haricot beans, drained and rinsed<br/>-2 g tins chopped tomatoes<br/>-1 tsp. caster sugar<br/>-4 medium eggs<br/>-4 slices sourdough bread, toasted<br/>-4 tbsp. mango chutney<br/>-large handful coriander, roughly chopped, to serve<br/><b>DIRECTIONS<b/><br>Preheat oven to 200°C (180°C fan) mark 6. In a large roasting tin, mix onion, oil and curry powder. Roast for 15min, until onion has started to soften. Stir through beans, tomatoes, sugar and plenty of seasoning. Return to oven for 30min, stirring occasionally, until sauce is bubbling and has thickened slightly.<br/>When the beans are nearly ready, poach the eggs. Bring a large deep pan of water to the boil, then reduce to a simmer. Crack an egg into a ramekin or coffee cup, then neatly pour the egg into the simmering water. Working quickly, add a further 3 eggs in a similar fashion. Poach for 4min, or until, when lifted out with a slotted spoon, the whites feel firm but the yolks remain soft. Lift eggs out with a slotted spoon and drain on kitchen paper.<br/>Spread the mango chutney over the toasted sourdough. Top with beans, poached egg and a sprinkling of coriander. Serve.",
+          tip:'glavno jelo',
+          korisnikDodao: false,
+          obrisan: false,
+          trajanje:70,
+          opisJela: "A recipe that’s easily scalable or divisible. Would make a delicious brunch too.Swap the haricot for mixed beans, if you like. Garnish with finely chopped red chilli if you fancy something a little spicier."
         }
       ];
+    let jezik = "srpski";
+    localStorage.setItem("jezik", jezik);
     localStorage.setItem("listaRecepata", JSON.stringify(recepti));
+    localStorage.setItem("engleskiRecepti", JSON.stringify(engleskiRecepti));
     if (document != null)
       document.title = 'Početna';
   },

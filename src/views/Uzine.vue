@@ -1,4 +1,5 @@
 <template>
+<Header></Header>
     <div class="row">
         BreadCrumbs
     </div>
@@ -28,7 +29,7 @@
     <div v-for="recept in filterListe">
         <recept-kartica v-if="recept.tip == this.tipRecepta" :korisnikDodao="recept.korisnikDodao" :tip="recept.tip" :ime="recept.ime" :tezina ="recept.tezina" :ocena="recept.ocena" :kratakOpis="recept.kratakOpis" :slika="recept.slika" :trajanje="recept.trajanje" :opisJela="recept.opisJela"></recept-kartica>
     </div>
-    
+    <Footer></Footer>
 </template>
 
 <style>
@@ -70,9 +71,12 @@ form::after {
 <script>
 import ReceptKartica from '@/components/ReceptKartica.vue';
 import ListaReceptKartica from '@/components/ListaReceptKartica.vue';
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
-  components: { ReceptKartica, ListaReceptKartica },
+  components: { Header,
+    Footer,ReceptKartica, ListaReceptKartica },
     
      name: 'Uzine',
      data() {

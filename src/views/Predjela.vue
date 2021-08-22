@@ -105,7 +105,8 @@ export default {
     methods: {
         obrisi(recept)
         {
-            alert(recept.ime);
+            this.listaRecepata = JSON.parse(localStorage.getItem("listaRecepata"));
+            this.filtriranaLista = this.listaRecepata;
         },
         ucitajPodatke() {
             this.naziv = 'predjela';
@@ -151,10 +152,6 @@ export default {
                 this.filtriranaLista = this.filtriraj();
             }
         },
-        refreshListaRecepata()
-        {
-            alert("Refreshed");
-        }
     }
 }
 </script>

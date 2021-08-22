@@ -101,15 +101,14 @@ export default {
     setup(props, context)
     {
         function obrisi() {
-            this.listaRecepata = JSON.parse(localStorage.getItem("listaRecepata")) 
+            this.listaRecepata = JSON.parse(localStorage.getItem("listaRecepata"));
             for(let i = 0; i < this.listaRecepata.length; i++) {
-                if (this.listaRecepata[i].ime == this.ime) {
-                    this.listaRecepata.splice(i, 1)
+                if (this.listaRecepata[i].ime == props.ime) {
+                    this.listaRecepata.splice(i, 1);
                     break;
                 }
             }
-            localStorage.setItem("listaRecepata", JSON.stringify(this.listaRecepata))
-            this.obrisan = true;
+            localStorage.setItem("listaRecepata", JSON.stringify(this.listaRecepata));
             context.emit("refreshListu", "");
         }
 

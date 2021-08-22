@@ -118,23 +118,30 @@ export default {
                     skracenoUputstvo = this.uputstvo.slice(0, duzina);
                     alert("Dodato uputstvo skracenom");
 
-
+                    let id = localStorage.getItem("staticId");
                     let recept = {
+                        id: id,
                         ime:this.imeRecepta,
                         tezina:this.tezinaSpremanja,
-                        ocena:5.0,
+                        ocena:0.0,
                         slika:'assets/recepti/musaka.jpg',
-                        kratakOpis:skracenoUputstvo,
+                        kratakOpis:this.uputstvo,
                         tip:this.grupaRecepta,
-                        trajanje: 45,
-                        korisnikDodao:true
+                        trajanje:this.duzinaSpremanja,
+                        opisJela:"",
+                        video:"",
+                        korisnikDodao:true,
+                        obrisan: false
                     }
+                    id++;
+                    localStorage.setItem("staticId", id);
                     this.listaRecepata.push(recept);
                     localStorage.setItem("listaRecepata", JSON.stringify(this.listaRecepata));
                     this.sinhronizujRecepte(recept); // Dodaj recept i u niz mojih recepata (Nemanja)
                     this.greska='';
                     this.listaRecepata.forEach(el=> {alert(el.ime);});
                     this.greska = '';
+                    id++;
                 }
             }
             this.listaRecepata.forEach(el=> {alert(el.ime);});

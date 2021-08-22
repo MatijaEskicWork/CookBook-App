@@ -27,7 +27,7 @@
         </form>
     </div>
     <div v-for="recept in filterListe" >
-        <recept-kartica v-if="recept.tip == this.tipRecepta" :korisnikDodao="recept.korisnikDodao" :tip="recept.tip" :ime="recept.ime" :tezina ="recept.tezina" :ocena="recept.ocena" :kratakOpis="recept.kratakOpis" :slika="recept.slika" :trajanje="recept.trajanje" :opisJela="recept.opisJela"></recept-kartica>
+        <recept-kartica @refreshListu="obrisi(recept)" v-if="recept.tip == this.tipRecepta" :korisnikDodao="recept.korisnikDodao" :tip="recept.tip" :ime="recept.ime" :tezina ="recept.tezina" :ocena="recept.ocena" :kratakOpis="recept.kratakOpis" :slika="recept.slika" :trajanje="recept.trajanje" :opisJela="recept.opisJela"></recept-kartica>
         
     </div>
     <Footer></Footer>
@@ -109,6 +109,11 @@ export default {
         document.title = 'Recepti';
     },
     methods: {
+        obrisi(recept)
+        {
+            this.listaRecepata = JSON.parse(localStorage.getItem("listaRecepata"));
+            this.filtriranaLista = this.listaRecepata;
+        },
         ucitajPodatke() {
             this.naziv = 'deserata';
             this.tipRecepta = 'desert';

@@ -27,7 +27,7 @@
         </form>
     </div>
     <div v-for="recept in filterListe">
-        <recept-kartica v-if="recept.tip == this.tipRecepta && recept.obrisan == false" :korisnikDodao="recept.korisnikDodao" :tip="recept.tip" :ime="recept.ime" :tezina ="recept.tezina" :ocena="recept.ocena" :kratakOpis="recept.kratakOpis" :slika="recept.slika" :trajanje="recept.trajanje" :opisJela="recept.opisJela"></recept-kartica>
+        <recept-kartica @refreshListu="obrisi(recept)" v-if="recept.tip == this.tipRecepta" :id="recept.id" :korisnikDodao="recept.korisnikDodao" :tip="recept.tip" :ime="recept.ime" :tezina ="recept.tezina" :ocena="recept.ocena" :kratakOpis="recept.kratakOpis" :slika="recept.slika" :trajanje="recept.trajanje" :opisJela="recept.opisJela"></recept-kartica>
     </div>
     <Footer></Footer>
 </template>
@@ -105,11 +105,15 @@ export default {
         this.ucitajPodatke();
         //this.recepti = JSON.parse(localStorage.getItem('recepti'));
         this.listaRecepata = JSON.parse(localStorage.getItem("listaRecepata"));
-        this.filtriranaLista = this.listaRecepata;  
-        this.listaRecepata.forEach(el=> {alert(el.ime);});
+        this.filtriranaLista = this.listaRecepata;
         document.title = 'Recepti';
     },
     methods: {
+        obrisi(recept)
+        {
+            this.listaRecepata = JSON.parse(localStorage.getItem("listaRecepata"));
+            this.filtriranaLista = this.listaRecepata;
+        },
         ucitajPodatke() {
             this.naziv = 'glavnih jela';
             this.tipRecepta = 'glavno jelo';

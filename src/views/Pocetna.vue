@@ -77,7 +77,8 @@ export default {
       localStorage.removeItem("listaRecepata");
     }
     let recepti = [
-          {ime: "Kaubojski kavijar", 
+          { id: 1,
+            ime: "Kaubojski kavijar", 
             tezina:2.5, 
             ocena:0.0, 
             slika:"assets/recepti/predjela/kaubojskikavijar1.jpg", 
@@ -86,9 +87,11 @@ export default {
             korisnikDodao: false,
             obrisan: false,
             trajanje:45,
-            opisJela: "A healthy and hearty make-ahead dip, this recipe is the ultimate side dish to bring to your next potluck or backyard party. It's easy and inexpensive to put together, and your crowd will surely love it — just don’t forget the chips!"
+            opisJela: "A healthy and hearty make-ahead dip, this recipe is the ultimate side dish to bring to your next potluck or backyard party. It's easy and inexpensive to put together, and your crowd will surely love it — just don’t forget the chips!",
+            video: 'https://www.youtube.com/watch?v=M_5aVkzZaYw'
           },
         {
+          id: 2,
           ime: "Letnje rolnice",
           tezina: 3.3,
           ocena: 0.0,
@@ -98,9 +101,11 @@ export default {
           korisnikDodao: false,
           obrisan: false,
           trajanje:30,
-          opisJela: "Turn an easy appetizer or dinner into a fun family activity with this summer rolls recipe — it’s a blast to make and even more enjoyable to eat! This Vietnamese restaurant staple is easy to make at home with store-bought rice paper wrappers, your favorite veggies, and an addictive dipping sauce."
+          opisJela: "Turn an easy appetizer or dinner into a fun family activity with this summer rolls recipe — it’s a blast to make and even more enjoyable to eat! This Vietnamese restaurant staple is easy to make at home with store-bought rice paper wrappers, your favorite veggies, and an addictive dipping sauce.",
+          video: 'https://www.youtube.com/watch?v=dYgRHTSdOGE'
         },
         {
+          id: 3,
           ime: "Laka crvena salsa",
           tezina: 2.0,
           ocena: 0.0,
@@ -111,9 +116,11 @@ export default {
           korisnikDodao: false,
           obrisan: false,
           trajanje:25,
-          opisJela: "No need to buy salsa from the store ever again: This easy red salsa recipe is about to be your new go-to snack. Bright, fresh, and loaded with flavor, you'll want to load up on chips to serve this dip at every party (did someone say Cinco de Mayo?). Our (vegan!) salsa takes advantage of fresh tomatoes, spicy jalapeños, and plenty of cilantro for bold flavor. Top tip: Marinating the onions and jalapeños in lime juice will tame the raw bite while still keeping all of the taste that you love about these slightly spicy ingredients."
+          opisJela: "No need to buy salsa from the store ever again: This easy red salsa recipe is about to be your new go-to snack. Bright, fresh, and loaded with flavor, you'll want to load up on chips to serve this dip at every party (did someone say Cinco de Mayo?). Our (vegan!) salsa takes advantage of fresh tomatoes, spicy jalapeños, and plenty of cilantro for bold flavor. Top tip: Marinating the onions and jalapeños in lime juice will tame the raw bite while still keeping all of the taste that you love about these slightly spicy ingredients.",
+          video: 'https://www.youtube.com/watch?v=TfOQHUWM-_M'
         },
-        {ime: "Rendani tofu 'Ćorizo' takos", 
+        {   id: 4,
+            ime: "Rendani tofu 'Ćorizo' takos", 
             tezina:3.0, 
             ocena:0.0, 
             slika:"assets/recepti/glavnaJela/rendanitofu1.jpg", 
@@ -122,9 +129,10 @@ export default {
             korisnikDodao: false,
             obrisan: false,
             trajanje:75,
-            opisJela: "Grating the tofu allows it to crisp up in the pan quickly, while the mushrooms and spices give it a meaty flavour reminiscent of chorizo."
+            opisJela: "Grating the tofu allows it to crisp up in the pan quickly, while the mushrooms and spices give it a meaty flavour reminiscent of chorizo.",
+            video: 'https://www.youtube.com/watch?v=WMpN0OfR2fw'
           },
-        {
+        { id: 5,
           ime: "Fajita traybake",
           tezina: 3.3,
           ocena: 0.0,
@@ -134,9 +142,10 @@ export default {
           korisnikDodao: false,
           obrisan: false,
           trajanje:60,
-          opisJela: "Easy and healthy Mexican main dish for lunch or dinner. It will make your day fullfiled.If you don’t fancy rice, serve inside warm wholemeal tortillas instead."
+          opisJela: "Easy and healthy Mexican main dish for lunch or dinner. It will make your day fullfiled.If you don’t fancy rice, serve inside warm wholemeal tortillas instead.",
+          video: 'https://www.youtube.com/watch?v=M7ueHFxCRpQ'
         },
-        {
+        { id: 6,
           ime: "Curried baked beans",
           tezina: 3.5,
           ocena: 0.0,
@@ -147,12 +156,14 @@ export default {
           korisnikDodao: false,
           obrisan: false,
           trajanje:70,
-          opisJela: "A recipe that’s easily scalable or divisible. Would make a delicious brunch too.Swap the haricot for mixed beans, if you like. Garnish with finely chopped red chilli if you fancy something a little spicier."
+          opisJela: "A recipe that’s easily scalable or divisible. Would make a delicious brunch too.Swap the haricot for mixed beans, if you like. Garnish with finely chopped red chilli if you fancy something a little spicier.",
+          video: 'https://www.youtube.com/watch?v=X_2K2Fnr5H0'
         }
       ];
 
       let engleskiRecepti = [
-          {ime: "Cowboy caviar", 
+          { id: 1,
+            ime: "Cowboy caviar", 
             tezina:2.5, 
             ocena:0.0, 
             slika:"assets/recepti/kaubojskikavijar1.jpg", 
@@ -161,9 +172,11 @@ export default {
             korisnikDodao: false,
             obrisan: false,
             trajanje:45,
-            opisJela: "A healthy and hearty make-ahead dip, this recipe is the ultimate side dish to bring to your next potluck or backyard party. It's easy and inexpensive to put together, and your crowd will surely love it — just don’t forget the chips!"
+            opisJela: "A healthy and hearty make-ahead dip, this recipe is the ultimate side dish to bring to your next potluck or backyard party. It's easy and inexpensive to put together, and your crowd will surely love it — just don’t forget the chips!",
+            video: 'https://www.youtube.com/watch?v=M_5aVkzZaYw'
+
           },
-        {
+        { id: 2,
           ime: "Summer rolls",
           tezina: 3.3,
           ocena: 0.0,
@@ -173,9 +186,10 @@ export default {
           korisnikDodao: false,
           obrisan: false,
           trajanje:30,
-          opisJela: "Turn an easy appetizer or dinner into a fun family activity with this summer rolls recipe — it’s a blast to make and even more enjoyable to eat! This Vietnamese restaurant staple is easy to make at home with store-bought rice paper wrappers, your favorite veggies, and an addictive dipping sauce."
+          opisJela: "Turn an easy appetizer or dinner into a fun family activity with this summer rolls recipe — it’s a blast to make and even more enjoyable to eat! This Vietnamese restaurant staple is easy to make at home with store-bought rice paper wrappers, your favorite veggies, and an addictive dipping sauce.",
+          video: 'https://www.youtube.com/watch?v=dYgRHTSdOGE'
         },
-        {
+        { id: 3,
           ime: "Easy red salsa",
           tezina: 2.0,
           ocena: 0.0,
@@ -186,9 +200,11 @@ export default {
           korisnikDodao: false,
           obrisan: false,
           trajanje:25,
-          opisJela: "No need to buy salsa from the store ever again: This easy red salsa recipe is about to be your new go-to snack. Bright, fresh, and loaded with flavor, you'll want to load up on chips to serve this dip at every party (did someone say Cinco de Mayo?). Our (vegan!) salsa takes advantage of fresh tomatoes, spicy jalapeños, and plenty of cilantro for bold flavor. Top tip: Marinating the onions and jalapeños in lime juice will tame the raw bite while still keeping all of the taste that you love about these slightly spicy ingredients."
+          opisJela: "No need to buy salsa from the store ever again: This easy red salsa recipe is about to be your new go-to snack. Bright, fresh, and loaded with flavor, you'll want to load up on chips to serve this dip at every party (did someone say Cinco de Mayo?). Our (vegan!) salsa takes advantage of fresh tomatoes, spicy jalapeños, and plenty of cilantro for bold flavor. Top tip: Marinating the onions and jalapeños in lime juice will tame the raw bite while still keeping all of the taste that you love about these slightly spicy ingredients.",
+          video: 'https://www.youtube.com/watch?v=TfOQHUWM-_M'
         },
-        {ime: "Rendani tofu 'Ćorizo' takos", 
+        {   id: 4,
+            ime: "Rendani tofu 'Ćorizo' takos", 
             tezina:3.0, 
             ocena:0.0, 
             slika:"assets/recepti/glavnaJela/rendanitofu1.jpg", 
@@ -197,9 +213,10 @@ export default {
             korisnikDodao: false,
             obrisan: false,
             trajanje:75,
-            opisJela: "Grating the tofu allows it to crisp up in the pan quickly, while the mushrooms and spices give it a meaty flavour reminiscent of chorizo."
+            opisJela: "Grating the tofu allows it to crisp up in the pan quickly, while the mushrooms and spices give it a meaty flavour reminiscent of chorizo.",
+            video: 'https://www.youtube.com/watch?v=WMpN0OfR2fw'
           },
-        {
+        { id: 5,
           ime: "Fajita traybake",
           tezina: 3.3,
           ocena: 0.0,
@@ -209,9 +226,10 @@ export default {
           korisnikDodao: false,
           obrisan: false,
           trajanje:60,
-          opisJela: "Easy and healthy Mexican main dish for lunch or dinner. It will make your day fullfiled.If you don’t fancy rice, serve inside warm wholemeal tortillas instead."
+          opisJela: "Easy and healthy Mexican main dish for lunch or dinner. It will make your day fullfiled.If you don’t fancy rice, serve inside warm wholemeal tortillas instead.",
+          video: 'https://www.youtube.com/watch?v=M7ueHFxCRpQ'
         },
-        {
+        { id: 6,
           ime: "Curried baked beans",
           tezina: 3.5,
           ocena: 0.0,
@@ -222,7 +240,8 @@ export default {
           korisnikDodao: false,
           obrisan: false,
           trajanje:70,
-          opisJela: "A recipe that’s easily scalable or divisible. Would make a delicious brunch too.Swap the haricot for mixed beans, if you like. Garnish with finely chopped red chilli if you fancy something a little spicier."
+          opisJela: "A recipe that’s easily scalable or divisible. Would make a delicious brunch too.Swap the haricot for mixed beans, if you like. Garnish with finely chopped red chilli if you fancy something a little spicier.",
+          video: 'https://www.youtube.com/watch?v=X_2K2Fnr5H0'
         }
       ];
     let jezik = "srpski";

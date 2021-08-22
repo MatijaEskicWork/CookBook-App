@@ -26,8 +26,8 @@
             </select>
         </form>
     </div>
-    <div v-for="recept in filterListe">
-        <recept-kartica v-if="recept.tip == this.tipRecepta" :korisnikDodao="recept.korisnikDodao" :tip="recept.tip" :ime="recept.ime" :tezina ="recept.tezina" :ocena="recept.ocena" :kratakOpis="recept.kratakOpis" :slika="recept.slika" :trajanje="recept.trajanje" :opisJela="recept.opisJela"></recept-kartica>
+    <div v-for="(recept, index) in filterListe" :key=index>
+        <recept-kartica @refreshListu="obrisi(recept)" v-if="recept.tip == this.tipRecepta" :korisnikDodao="recept.korisnikDodao" :tip="recept.tip" :ime="recept.ime" :tezina ="recept.tezina" :ocena="recept.ocena" :kratakOpis="recept.kratakOpis" :slika="recept.slika" :trajanje="recept.trajanje" :opisJela="recept.opisJela"></recept-kartica>
     </div>
     <Footer></Footer>
 </template>
@@ -103,6 +103,10 @@ export default {
         document.title = 'Recepti';
     },
     methods: {
+        obrisi(recept)
+        {
+            alert(recept.ime);
+        },
         ucitajPodatke() {
             this.naziv = 'predjela';
             this.tipRecepta = 'predjelo';
@@ -146,6 +150,10 @@ export default {
             if (this.pretragaTekst != '' && this.pretragaTekst != null) {
                 this.filtriranaLista = this.filtriraj();
             }
+        },
+        refreshListaRecepata()
+        {
+            alert("Refreshed");
         }
     }
 }

@@ -46,7 +46,7 @@
           <button class="btn btn-outline-light" type="submit" style="user-select: auto;">Search</button>
         </form>
         !-->
-        <select class="#" name="jezik" id="lista-jezik" @change="promeniJezik()">
+        <select class="#" name="jezik" id="lista-jezik" @change="promenaJezika()">
             <option value="srpski">Srpski</option>
             <option value="engleski">English</option>
         </select>
@@ -100,9 +100,9 @@
           <button class="btn btn-outline-light" type="submit" style="user-select: auto;">Search</button>
         </form>
         !-->
-        <select class="#" name="jezik" id="lista-jezik" @change="promeniJezik()">
+        <select class="#" name="jezik" id="lista-jezik" @change="promenaJezika()">
             <option value="srpski">Srpski</option>
-            <option value="engleski">English</option>
+            <option selected value="engleski">English</option>
         </select>
       </div>
     </nav>
@@ -161,6 +161,7 @@ export default {
   data()
   {
     return{
+      show:true,
       aktivanTab:'',
       jezik:''
     }
@@ -173,17 +174,24 @@ export default {
     mouseout(){
       $('#button-recepti').removeClass('show').attr('aria-expanded', 'false');
       $('#dropdown-tipovi-jela').removeClass('show').removeAttr('data-bs-popper');
-    },
-    promeniJezik() {
-      let jezik = localStorage.getItem("jezik");
-      if (jezik == "srpski") {
-        jezik = "engleski";
-      }
-      else jezik = "srpski";
-      localStorage.setItem("jezik", jezik);
-      alert(jezik);
     }
   },
+  setup(props, context)
+    {
+        function promenaJezika() {
+          let jezik = localStorage.getItem("jezik");
+          if (jezik == "srpski") {
+            jezik = "engleski";
+          }
+          else jezik = "srpski";
+          localStorage.setItem("jezik", jezik);
+          context.emit("osveziJezik", "");
+        }
+
+        return{
+            promenaJezika
+        }
+    },
   mounted()
   {
     this.jezik = localStorage.getItem("jezik");

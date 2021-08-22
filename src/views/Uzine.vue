@@ -70,13 +70,12 @@ form::after {
 
 <script>
 import ReceptKartica from '@/components/ReceptKartica.vue';
-import ListaReceptKartica from '@/components/ListaReceptKartica.vue';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 
 export default {
   components: { Header,
-    Footer,ReceptKartica, ListaReceptKartica },
+    Footer,ReceptKartica},
     
      name: 'Uzine',
      data() {

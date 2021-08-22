@@ -1,5 +1,5 @@
-<template>
-<Header/>
+<template v-if="show == true">
+<Header @osveziJezik="promenaJezika()"/>
   <div class="row">
     <div class="col">
       <!--<h2 id="top-3-recepta">Top 3 recepta</h2>-->
@@ -26,7 +26,8 @@
     <Baneri/>
   </div>
   <Footer></Footer>
-</template>
+  <div/>
+  </template>
 
 <style>
 #top-3-recepta{
@@ -71,6 +72,18 @@ export default {
     Blogovi,
     KursKuvanja,
     Baneri
+  },
+  data() {
+    return {
+      show: true
+    }
+  },
+  methods: {
+    promenaJezika() {
+      window.location.reload();
+      let jezik = localStorage.getItem("jezik");
+      alert("Jezik iz pocetne" + jezik);
+    }
   },
   created(){
     if (localStorage.getItem("listaRecepata") != null) {

@@ -1,6 +1,6 @@
 <template>
-<Header></Header>
-    <div>
+    <Header @osveziJezik="promenaJezika()"></Header>
+    <div v-if="this.jezik=='srpski'">
         <form id="dodajRecept">
             <div>
                 <label for="imeRecepta">Ime recepta:</label>
@@ -35,6 +35,41 @@
             </div>
         </form>
     </div>
+    <div v-else>
+        <form id="dodajRecept">
+            <div>
+                <label for="imeRecepta">Name of recipe:</label>
+                <input type="text" v-model="imeRecepta">
+            </div>
+            <div>
+                <label for="grupaRecepta">Group of recipe:</label>
+                <select name="grupaRecepta" id="grupaRecepta" v-model="grupaRecepta">
+                    <option value="predjelo">Appetizer</option>
+                    <option value="glavno jelo">Main dish</option>
+                    <option value="desert">Desert</option>
+                    <option value="uzina">Snack</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="uputstvo">Preparation manual:</label>
+                <textarea name="uputstvo" id="" cols="30" rows="10" v-model="uputstvo"></textarea>
+            </div>
+            <div>
+                <label for="duzinaSpremanja">Duration of recipe preparation(in minutes):</label>
+                <input type="number" v-model="duzinaSpremanja">
+            </div>
+
+            <div>
+                <label for="tezinaSpremanja">Difficulty of recipe preparation(0-5):</label>
+                <input type="number" step="0.2" v-model="tezinaSpremanja">
+            </div>
+            <span class="greska">{{this.greska}}</span>
+            <div>
+                <button @click="dodaj()" type="button">Add recipe</button>
+            </div>
+        </form>
+    </div>
     <Footer></Footer>
 </template>
 
@@ -61,16 +96,21 @@ export default {
              listaRecepata:[],
              greska:'',
              minDuzinaImena:8,
-             minDuzinaUputstva:100
+             minDuzinaUputstva:100,
+             jezik:''
          }
      },
     created(){
         //this.recepti = JSON.parse(localStorage.getItem('recepti'));
+        this.jezik = localStorage.getItem("jezik");
         this.listaRecepata = JSON.parse(localStorage.getItem("listaRecepata"));
-        this.listaRecepata.forEach(el=> {alert(el.ime);});
         this.greska = '';
     },
     methods: {
+        promenaJezika() {
+            window.location.reload();
+            let jezik = localStorage.getItem("jezik");
+        },
         proveriGreske(){
             if (this.imeRecepta.length < this.minDuzinaImena){
                 this.greska = 'Prekratko ime recepta. Ime recepta mora da sadrži barem 8 karaktera.';
@@ -114,9 +154,7 @@ export default {
                     if (duzina > this.uputstvo.length) {
                         duzina = this.uputstvo.length;
                     }
-                    alert("Prosao ovaj deo");
                     skracenoUputstvo = this.uputstvo.slice(0, duzina);
-                    alert("Dodato uputstvo skracenom");
 
                     let id = localStorage.getItem("staticId");
                     let recept = {
@@ -139,12 +177,10 @@ export default {
                     localStorage.setItem("listaRecepata", JSON.stringify(this.listaRecepata));
                     this.sinhronizujRecepte(recept); // Dodaj recept i u niz mojih recepata (Nemanja)
                     this.greska='';
-                    this.listaRecepata.forEach(el=> {alert(el.ime);});
                     this.greska = '';
                     id++;
                 }
             }
-            this.listaRecepata.forEach(el=> {alert(el.ime);});
         },
         sinhronizujRecepte(recept) // Metoda za dupliranje recepta u niz recepata - NEMANJA
         {

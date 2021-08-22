@@ -98,8 +98,9 @@ export default {
             kratakOpisJela:''
         }
     },
-    methods: {
-        obrisi() {
+    setup(props, context)
+    {
+        function obrisi() {
             this.listaRecepata = JSON.parse(localStorage.getItem("listaRecepata")) 
             for(let i = 0; i < this.listaRecepata.length; i++) {
                 if (this.listaRecepata[i].ime == this.ime) {
@@ -108,8 +109,27 @@ export default {
                 }
             }
             localStorage.setItem("listaRecepata", JSON.stringify(this.listaRecepata))
-            this.obrisan = true
+            this.obrisan = true;
+            context.emit("refreshListu", "");
         }
+
+        return{
+            obrisi
+        }
+    },
+    methods: {
+        /*obrisi() {
+            this.listaRecepata = JSON.parse(localStorage.getItem("listaRecepata")) 
+            for(let i = 0; i < this.listaRecepata.length; i++) {
+                if (this.listaRecepata[i].ime == this.ime) {
+                    this.listaRecepata.splice(i, 1)
+                    break;
+                }
+            }
+            localStorage.setItem("listaRecepata", JSON.stringify(this.listaRecepata))
+            this.obrisan = true;
+            EventBus.$emit("refreshListaRecepata", "");
+        }*/
     },
     created() {
         this.kratakOpisJela = this.opisJela.slice(0,150);

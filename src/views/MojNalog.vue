@@ -1,5 +1,6 @@
 <template>
-<Header></Header>
+<div v-if="this.jezik == 'srpski'">
+    <Header @osveziJezik="promenaJezika()"></Header>
     <div class="row">
         <div class="col-12">
             <h1 class="naslov-moj-nalog">Moji recepti</h1>
@@ -61,6 +62,71 @@
         </div>
     </div>
     <Footer></Footer>
+</div>
+<div v-else>
+    <Header @osveziJezik="promenaJezika()"></Header>
+    <div class="row">
+        <div class="col-12">
+            <h1 class="naslov-moj-nalog">My recipes</h1>
+            <ol class="lista-moji-recepti" id="lista-mojih-recepata">
+                <li v-for="recept in mojiRecepti" :key="recept.id">
+                    <router-link v-bind:to="'/recept/' + recept.id"> {{recept.naziv}}</router-link>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <hr class="horizontalna-linija">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="naslov-moj-nalog">My comments</h1>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Recipe</th>
+                        <th>Comment</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(komentar, index) in mojiKomentari" :key="index">
+                        <td>{{index + 1}}.</td>
+                        <td><router-link v-bind:to="'/recept/' + komentar.idRecepta">{{komentar.imeRecepta}}</router-link></td>
+                        <td>{{komentar.komentar}}</td>
+                        <td>{{komentar.vreme}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr class="horizontalna-linija">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="naslov-moj-nalog">My ratings</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Recipe</th>
+                        <th>Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(ocena, index) in mojeOcene" :key="index">
+                        <td>{{index + 1}}.</td>
+                        <td><router-link v-bind:to="'/recept/' + ocena.idRecepta">{{ocena.imeRecepta}}</router-link></td>
+                        <td>{{ocena.ocena}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <Footer></Footer>
+</div>
 </template>
 
 <style>
@@ -91,9 +157,12 @@ export default {
     name: 'MojNalog',
     data() {
         return{
+            jezik: '',
             mojiRecepti: [],
             mojiKomentari: [],
-            mojeOcene: []
+            mojeOcene: [],
+            mojiReceptiSrpski: [],
+            mojiReceptiEngleski: []
         }
     },
     created(){
@@ -101,7 +170,7 @@ export default {
         this.ucitajRecepte();
         this.ucitajKomentare();
         this.ucitajOcene();
-        //this.popuniStranicu();
+        this.jezik = localStorage.getItem('jezik');
     },
     mounted()
     {
@@ -116,6 +185,7 @@ export default {
             }
             else
                 this.mojiRecepti = JSON.parse(localStorage.getItem('mojiRecepti'));
+            
         },
         ucitajKomentare(){
             if(localStorage.getItem('mojiKomentari') == null)
@@ -134,22 +204,11 @@ export default {
             }
             else
                 this.mojeOcene = JSON.parse(localStorage.getItem('mojeOcene'));
+        },
+        promenaJezika() {
+            window.location.reload();
+            let jezik = localStorage.getItem("jezik");
         }
-        /*popuniStranicu(){
-            let listaRecepata = $("#lista-mojih-recepata");
-            for(let i = 0; i < this.mojiRecepti.length; i++)
-            {
-                let link = "/recepti/" + this.mojiRecepti[i][id];
-                let nazivRecepta = this.mojiRecepti[i][naziv];
-
-                let listItem = $("<li></li>");
-                let routerLink = $("<router-link><router-link>").text(nazivRecepta);
-                routerLink.attr('to', link);
-                
-                listItem.append(routerLink);
-                listaRecepata.append(listItem);
-            }
-        }*/
     }
 }
 </script>

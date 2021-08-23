@@ -1,33 +1,67 @@
 <template v-if="show == true">
-<Header @osveziJezik="promenaJezika()" />
-  <div class="row">
-    <div class="col">
-      <!--<h2 id="top-3-recepta">Top 3 recepta</h2>-->
-    </div>  
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <!--<SlideshowRecepti/>-->
+  <div>
+    <div v-if="this.jezik == 'srpski'">
+      <Header @osveziJezik="promenaJezika()"/>
+      <div class="row">
+        <div class="col">
+          <h2 id="top-3-recepta">Top 3 recepta</h2>
+        </div>  
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <SlideshowRecepti/>
+        </div>
+      </div>
+      <hr class="linija">
+      <div id="blogovi">
+        <h1 id="header-blogovi">Blogovi koje preporučujemo</h1>
+        <Blogovi/>
+      </div>
+      <hr class="linija">
+      <div id="kulinarski-kursevi">
+        <h1 id="header-kulinarski-kursevi">Kulinarski kursevi</h1>
+        <KursKuvanja/>
+      </div>
+      <hr class="linija">
+      <div id="baneri">
+        <h1>Sponzori sajta</h1>
+        <Baneri/>
+      </div>
+      <Footer></Footer>
+      <div/>
+    </div>
+    <div v-else>
+      <Header @osveziJezik="promenaJezika()"/>
+      <div class="row">
+        <div class="col">
+          <h2 id="top-3-recepta">Top 3 recepta</h2>
+        </div>  
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <SlideshowRecepti/>
+        </div>
+      </div>
+      <hr class="linija">
+      <div id="blogovi">
+        <h1 id="header-blogovi">Recommended blogs</h1>
+        <Blogovi/>
+      </div>
+      <hr class="linija">
+      <div id="kulinarski-kursevi">
+        <h1 id="header-kulinarski-kursevi">Culinary courses</h1>
+        <KursKuvanja/>
+      </div>
+      <hr class="linija">
+      <div id="baneri">
+        <h1>Our sponsors</h1>
+        <Baneri/>
+      </div>
+      <Footer></Footer>
+      <div/>
     </div>
   </div>
-  <hr class="linija">
-  <div id="blogovi">
-    <h1 id="header-blogovi">Blogovi koje preporučujemo</h1>
-    <Blogovi/>
-  </div>
-  <hr class="linija">
-  <div id="kulinarski-kursevi">
-    <h1 id="header-kulinarski-kursevi">Kulinarski kursevi</h1>
-    <KursKuvanja/>
-  </div>
-  <hr class="linija">
-  <div id="baneri">
-    <h1>Sponzori sajta</h1>
-    <Baneri/>
-  </div>
-  <Footer></Footer>
-  <div/>
-  </template>
+</template>
 
 <style>
 #top-3-recepta{
@@ -75,7 +109,8 @@ export default {
   },
   data() {
     return {
-      show: true
+      show: true,
+      jezik: ''
     }
   },
   methods: {
@@ -85,6 +120,16 @@ export default {
         },
   },
   created(){
+    if(localStorage.getItem("jezik") != null)
+        {
+          this.jezik = localStorage.getItem("jezik");
+        }
+    else
+        {
+          this.jezik = 'srpski';
+          localStorage.setItem('jezik', 'srpski');
+        }
+
     if (localStorage.getItem("listaRecepata") != null) {
       localStorage.removeItem("listaRecepata");
     }
@@ -100,7 +145,9 @@ export default {
             obrisan: false,
             trajanje:45,
             opisJela: "A healthy and hearty make-ahead dip, this recipe is the ultimate side dish to bring to your next potluck or backyard party. It's easy and inexpensive to put together, and your crowd will surely love it — just don’t forget the chips!",
-            video: 'https://www.youtube.com/watch?v=M_5aVkzZaYw'
+            video: 'https://www.youtube.com/watch?v=M_5aVkzZaYw',
+            komentari: [],
+            ocene: []
           },
         {
           id: 2,
@@ -114,7 +161,9 @@ export default {
           obrisan: false,
           trajanje:30,
           opisJela: "Turn an easy appetizer or dinner into a fun family activity with this summer rolls recipe — it’s a blast to make and even more enjoyable to eat! This Vietnamese restaurant staple is easy to make at home with store-bought rice paper wrappers, your favorite veggies, and an addictive dipping sauce.",
-          video: 'https://www.youtube.com/watch?v=dYgRHTSdOGE'
+          video: 'https://www.youtube.com/watch?v=dYgRHTSdOGE',
+          komentari: [],
+          ocene: []
         },
         {
           id: 3,
@@ -129,7 +178,9 @@ export default {
           obrisan: false,
           trajanje:25,
           opisJela: "No need to buy salsa from the store ever again: This easy red salsa recipe is about to be your new go-to snack. Bright, fresh, and loaded with flavor, you'll want to load up on chips to serve this dip at every party (did someone say Cinco de Mayo?). Our (vegan!) salsa takes advantage of fresh tomatoes, spicy jalapeños, and plenty of cilantro for bold flavor. Top tip: Marinating the onions and jalapeños in lime juice will tame the raw bite while still keeping all of the taste that you love about these slightly spicy ingredients.",
-          video: 'https://www.youtube.com/watch?v=TfOQHUWM-_M'
+          video: 'https://www.youtube.com/watch?v=TfOQHUWM-_M',
+          komentari: [],
+          ocene: []
         },
         {   id: 4,
             ime: "Rendani tofu 'Ćorizo' takos", 
@@ -142,7 +193,9 @@ export default {
             obrisan: false,
             trajanje:75,
             opisJela: "Grating the tofu allows it to crisp up in the pan quickly, while the mushrooms and spices give it a meaty flavour reminiscent of chorizo.",
-            video: 'https://www.youtube.com/watch?v=WMpN0OfR2fw'
+            video: 'https://www.youtube.com/watch?v=WMpN0OfR2fw',
+            komentari: [],
+            ocene: []
           },
         { id: 5,
           ime: "Fajita traybake",
@@ -155,7 +208,9 @@ export default {
           obrisan: false,
           trajanje:60,
           opisJela: "Easy and healthy Mexican main dish for lunch or dinner. It will make your day fullfiled.If you don’t fancy rice, serve inside warm wholemeal tortillas instead.",
-          video: 'https://www.youtube.com/watch?v=M7ueHFxCRpQ'
+          video: 'https://www.youtube.com/watch?v=M7ueHFxCRpQ',
+          komentari: [],
+            ocene: []
         },
         { id: 6,
           ime: "Curried baked beans",
@@ -169,7 +224,9 @@ export default {
           obrisan: false,
           trajanje:70,
           opisJela: "A recipe that’s easily scalable or divisible. Would make a delicious brunch too.Swap the haricot for mixed beans, if you like. Garnish with finely chopped red chilli if you fancy something a little spicier.",
-          video: 'https://www.youtube.com/watch?v=X_2K2Fnr5H0'
+          video: 'https://www.youtube.com/watch?v=X_2K2Fnr5H0',
+          komentari: [],
+            ocene: []
         },
         {
           id: 7,
@@ -183,7 +240,9 @@ export default {
           obrisan:false,
           trajanje: 60,
           opisJela: "Koliko snage sadržano u malom štapiću.</br>Koncentrisani ugljeni hidrati brzo će vam vratiti izgubljenu snagu, a suvo voće će dopuniti ukus zdravih semenki.",
-          video:'https://www.youtube.com/watch?v=isHZFjJ0pwo'
+          video:'https://www.youtube.com/watch?v=isHZFjJ0pwo',
+          komentari: [],
+            ocene: []
         },
         {
           id: 8,
@@ -197,7 +256,9 @@ export default {
           obrisan: false,
           trajanje: 20,
           opisJela: "Jako fin smoothie iz knjige Dr-a Andrew Weil 'Brza Hrana Zdrava Hrana'",
-          video: 'https://www.youtube.com/watch?v=3MItsAsSZq8'
+          video: 'https://www.youtube.com/watch?v=3MItsAsSZq8',
+          komentari: [],
+            ocene: []
         },
         {
           id: 9,
@@ -211,7 +272,9 @@ export default {
           obrisan: false,
           trajanje: 40,
           opisJela: "Više od pola kilograma različitog voća i samo četvrt kile brašna, integralnog.</br>Potpuno zdravo, a i posno ako se izbaci par sastojaka.</br>Dobra užina, početak dana ili poklon.",
-          video: 'https://www.youtube.com/watch?v=cH13RFjI2Vw'
+          video: 'https://www.youtube.com/watch?v=cH13RFjI2Vw',
+          komentari: [],
+            ocene: []
         },
         {
           id: 10,
@@ -225,7 +288,9 @@ export default {
           obrisan: false,
           trajanje: 10,
           opisJela: "Ovaj desert je jako jednostavan i gotov za 10 minuta, a u ukus je fantasticno karamelkast, sa crunchy keksom i bananom.",
-          video: 'https://www.youtube.com/watch?v=jbPR2SJuFHg'
+          video: 'https://www.youtube.com/watch?v=jbPR2SJuFHg',
+          komentari: [],
+            ocene: []
         },
         {
           id: 11,
@@ -239,7 +304,9 @@ export default {
           obrisan: false,
           trajanje: 20,
           opisJela: "Fantasticno i cokoladno!",
-          video: 'https://www.youtube.com/watch?v=XS6Q7xc8TWA'
+          video: 'https://www.youtube.com/watch?v=XS6Q7xc8TWA',
+          komentari: [],
+            ocene: []
         },
         {
           id: 12,
@@ -253,7 +320,9 @@ export default {
           obrisan: false,
           trajanje: 45,
           opisJela: "Prefini brownies! Recept je iz časopisa Lisa.",
-          video: 'https://www.youtube.com/watch?v=6OuJzGA0Umg'
+          video: 'https://www.youtube.com/watch?v=6OuJzGA0Umg',
+          komentari: [],
+            ocene: []
         }
       ];
 
@@ -269,8 +338,9 @@ export default {
             obrisan: false,
             trajanje:45,
             opisJela: "A healthy and hearty make-ahead dip, this recipe is the ultimate side dish to bring to your next potluck or backyard party. It's easy and inexpensive to put together, and your crowd will surely love it — just don’t forget the chips!",
-            video: 'https://www.youtube.com/watch?v=M_5aVkzZaYw'
-
+            video: 'https://www.youtube.com/watch?v=M_5aVkzZaYw',
+            komentari: [],
+            ocene: []
           },
         { id: 2,
           ime: "Summer rolls",
@@ -283,7 +353,9 @@ export default {
           obrisan: false,
           trajanje:30,
           opisJela: "Turn an easy appetizer or dinner into a fun family activity with this summer rolls recipe — it’s a blast to make and even more enjoyable to eat! This Vietnamese restaurant staple is easy to make at home with store-bought rice paper wrappers, your favorite veggies, and an addictive dipping sauce.",
-          video: 'https://www.youtube.com/watch?v=dYgRHTSdOGE'
+          video: 'https://www.youtube.com/watch?v=dYgRHTSdOGE',
+          komentari: [],
+            ocene: []
         },
         { id: 3,
           ime: "Easy red salsa",
@@ -297,7 +369,9 @@ export default {
           obrisan: false,
           trajanje:25,
           opisJela: "No need to buy salsa from the store ever again: This easy red salsa recipe is about to be your new go-to snack. Bright, fresh, and loaded with flavor, you'll want to load up on chips to serve this dip at every party (did someone say Cinco de Mayo?). Our (vegan!) salsa takes advantage of fresh tomatoes, spicy jalapeños, and plenty of cilantro for bold flavor. Top tip: Marinating the onions and jalapeños in lime juice will tame the raw bite while still keeping all of the taste that you love about these slightly spicy ingredients.",
-          video: 'https://www.youtube.com/watch?v=TfOQHUWM-_M'
+          video: 'https://www.youtube.com/watch?v=TfOQHUWM-_M',
+          komentari: [],
+            ocene: []
         },
         { id: 4,
           ime: "Grated tofu 'Choriso' tacos", 
@@ -310,7 +384,9 @@ export default {
           obrisan: false,
           trajanje:75,
           opisJela: "Grating the tofu allows it to crisp up in the pan quickly, while the mushrooms and spices give it a meaty flavour reminiscent of chorizo.",
-          video: 'https://www.youtube.com/watch?v=WMpN0OfR2fw'
+          video: 'https://www.youtube.com/watch?v=WMpN0OfR2fw',
+          komentari: [],
+            ocene: []
           },
         { id: 5,
           ime: "Fajita traybake",
@@ -323,7 +399,9 @@ export default {
           obrisan: false,
           trajanje:60,
           opisJela: "Easy and healthy Mexican main dish for lunch or dinner. It will make your day fullfiled.If you don’t fancy rice, serve inside warm wholemeal tortillas instead.",
-          video: 'https://www.youtube.com/watch?v=M7ueHFxCRpQ'
+          video: 'https://www.youtube.com/watch?v=M7ueHFxCRpQ',
+          komentari: [],
+            ocene: []
         },
         { id: 6,
           ime: "Curried baked beans",
@@ -337,7 +415,9 @@ export default {
           obrisan: false,
           trajanje:70,
           opisJela: "A recipe that’s easily scalable or divisible. Would make a delicious brunch too.Swap the haricot for mixed beans, if you like. Garnish with finely chopped red chilli if you fancy something a little spicier.",
-          video: 'https://www.youtube.com/watch?v=X_2K2Fnr5H0'
+          video: 'https://www.youtube.com/watch?v=X_2K2Fnr5H0',
+          komentari: [],
+            ocene: []
         },
         {
           id: 7,
@@ -351,7 +431,9 @@ export default {
           obrisan:false,
           trajanje: 60,
           opisJela: "How much power is contained in a small stick.</br>Concentrated carbohydrates will quickly restore your lost strength, and dried fruit will complement the taste of healthy seeds.",
-          video:'https://www.youtube.com/watch?v=isHZFjJ0pwo'
+          video:'https://www.youtube.com/watch?v=isHZFjJ0pwo',
+          komentari: [],
+            ocene: []
         },
         {
           id: 8,
@@ -365,7 +447,9 @@ export default {
           obrisan: false,
           trajanje: 20,
           opisJela: "Very nice smoothie from Dr. Andrew Weil's book 'Fast Food Healthy Food'",
-          video: 'https://www.youtube.com/watch?v=3MItsAsSZq8'
+          video: 'https://www.youtube.com/watch?v=3MItsAsSZq8',
+          komentari: [],
+            ocene: []
         },
         {
           id: 9,
@@ -379,7 +463,9 @@ export default {
           obrisan: false,
           trajanje: 40,
           opisJela: "More than half a kilo of different fruits and only a quarter of a kilo of flour, integral. </br> Completely healthy, and also lean if a couple of ingredients are thrown out. </br> A good snack, the beginning of the day or a gift.",
-          video: 'https://www.youtube.com/watch?v=cH13RFjI2Vw'
+          video: 'https://www.youtube.com/watch?v=cH13RFjI2Vw',
+          komentari: [],
+            ocene: []
         },
         {
           id: 10,
@@ -393,7 +479,9 @@ export default {
           obrisan: false,
           trajanje: 10,
           opisJela: "This dessert is very simple and ready in 10 minutes, and tastes fantastically caramel, with crunchy biscuits and bananas.",
-          video: 'https://www.youtube.com/watch?v=jbPR2SJuFHg'
+          video: 'https://www.youtube.com/watch?v=jbPR2SJuFHg',
+          komentari: [],
+            ocene: []
         },
         {
           id: 11,
@@ -407,7 +495,9 @@ export default {
           obrisan: false,
           trajanje: 20,
           opisJela: "Fantastic and chocolatey!",
-          video: 'https://www.youtube.com/watch?v=XS6Q7xc8TWA'
+          video: 'https://www.youtube.com/watch?v=XS6Q7xc8TWA',
+          komentari: [],
+            ocene: []
         },
         {
           id: 12,
@@ -421,13 +511,16 @@ export default {
           obrisan: false,
           trajanje: 45,
           opisJela: "Awesome brownies! Recipe is taken from magazine 'Lisa'.",
-          video: 'https://www.youtube.com/watch?v=6OuJzGA0Umg'
+          video: 'https://www.youtube.com/watch?v=6OuJzGA0Umg',
+          komentari: [],
+            ocene: []
         }
       ];
     let id = 13;
     localStorage.setItem("staticId", id);
     let jezik = "srpski";
-    localStorage.setItem("jezik", jezik);
+    if(localStorage.getItem("jezik") == null)
+      localStorage.setItem("jezik", jezik);
     localStorage.setItem("listaRecepata", JSON.stringify(recepti));
     localStorage.setItem("engleskiRecepti", JSON.stringify(engleskiRecepti));
     if (document != null)

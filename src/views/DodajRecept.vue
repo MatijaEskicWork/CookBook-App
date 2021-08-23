@@ -169,7 +169,9 @@ export default {
                         opisJela:"",
                         video:"",
                         korisnikDodao:true,
-                        obrisan: false
+                        obrisan: false,
+                        komentari: [],
+                        ocene: []
                     }
                     id++;
                     localStorage.setItem("staticId", id);

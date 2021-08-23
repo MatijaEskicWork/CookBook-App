@@ -1,33 +1,49 @@
 <template>
-<Header></Header>
+<div v-if="this.jezik == 'srpski'">
+    <Header @osveziJezik="promenaJezika()"></Header>
     <div>
         <div class="glavno">
             <div class="row">
                 <div class="col-lg-6 col-12 info">
-                    <h1 id="naziv-recepta">{{mojRecept.naziv}}</h1>
-                    <span> <b>Trajanje:</b> {{mojRecept.trajanje}}</span> <br>
-                    <span><b>Težina: </b>{{mojRecept.tezina}}</span> <br>
-                    <span><b>Prosečna ocena:</b> {{prosecnaOcena}}</span> <br>
-                    <table class="ocene-tabela">
-                        <tr>
-                            <td>
-                                <span><b>Ocena:</b></span>        
-                            </td>
-                            <td>
-                                <div class="form-group ocene">
-                                    <select class="form-control" id="moguceOcene">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                </div>
-                            </td>
-                        </tr>    
-                    </table>       
-                    <button class="btn btn-outline-success" id="dugme-unesi-ocenu" @click="unesiOcenu()">Unesi ocenu</button>   
-                    <button class="btn btn-outline-secondary" id="dugme-pdf" @click="skiniPDF()">Sacuvaj recept</button>      
+                    <h1 id="naziv-recepta">{{mojRecept.ime}}</h1>
+                    <table class="table table-borderless tabela-opste-informacije">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> <b>Trajanje:</b> </td>
+                                <td>{{mojRecept.trajanje}} min</td>
+                            </tr>
+                            <tr>
+                                <td><b>Težina: </b></td>
+                                <td>{{mojRecept.tezina}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Prosečna ocena:</b></td>
+                                <td>{{prosecnaOcena}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span><b>Ocena:</b></span>        
+                                </td>
+                                <td>
+                                    <div class="form-group ocene">
+                                        <select class="form-control" id="moguceOcene">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><button class="btn btn-outline-success" id="dugme-unesi-ocenu" @click="unesiOcenu()">Unesi ocenu</button></td>
+                                <td><button class="btn btn-outline-secondary" id="dugme-pdf" @click="skiniPDF()">Sačuvaj recept</button></td>
+                            </tr>
+                        </tbody>
+                    </table>      
                 </div>
                 <div class="col-lg-6 col-12">
                     <div id="carouselSlikeRecepta h-100" class="carousel slide">
@@ -47,8 +63,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
-                <p>{{mojRecept.priprema}}</p>
+            <div class="col-12" id="tekst-recepta">
+                <!--<span>{{mojRecept.kratakOpis}}</span>-->
             </div>
         </div>
         <hr>
@@ -60,7 +76,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="iframe-container">
-                    <iframe id="video" :src="mojRecept.videoUrl" frameborder="0" allowfullscreen></iframe>
+                    <iframe id="video" :src="napraviEmbeddedUrl(mojRecept.video)" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -99,6 +115,124 @@
         </div>
     </div> 
     <Footer></Footer>
+</div>
+<div v-else>
+    <Header @osveziJezik="promenaJezika()"></Header>
+    <div>
+        <div class="glavno">
+            <div class="row">
+                <div class="col-lg-6 col-12 info">
+                    <h1 id="naziv-recepta">{{mojRecept.ime}}</h1>
+                    <table class="table table-borderless tabela-opste-informacije">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> <b>Duration:</b> </td>
+                                <td>{{mojRecept.trajanje}} min</td>
+                            </tr>
+                            <tr>
+                                <td> <b>Difficulty: </b></td>
+                                <td>{{mojRecept.tezina}}</td>
+                            </tr>
+                            <tr>
+                                <td> <b>Average rating:</b></td>
+                                <td>{{prosecnaOcena}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span><b>Rate:</b></span>        
+                                </td>
+                                <td>
+                                    <div class="form-group ocene">
+                                        <select class="form-control" id="moguceOcene">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><button class="btn btn-outline-success" id="dugme-unesi-ocenu" @click="unesiOcenu()">Enter the rating</button></td>
+                                <td><button class="btn btn-outline-secondary" id="dugme-pdf" @click="skiniPDF()">Save recipe</button></td>
+                            </tr>
+                        </tbody>
+                    </table>      
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div id="carouselSlikeRecepta h-100" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                            <img class="d-block w-100" :src="dohvatiSliku('1.jpg')" alt="First slide">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <h2>Preparation</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12" id="tekst-recepta">
+                <!--<span>{{mojRecept.kratakOpis}}</span>-->
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <h2>Video tutorial</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="iframe-container">
+                    <iframe id="video" :src="napraviEmbeddedUrl(mojRecept.video)" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <h2>Leave a comment</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <textarea class="form-control" id="moj-komentar" rows="3" placeholder="Komentar..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button id="btn-unesi-komentar" class="btn btn-outline-success" @click="unesiKomentar()">Enter the comment</button>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <h2>All comments</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div id="koment-sekcija">
+                    <div v-for="(komentar, index) in mojRecept.komentari" :key="index" class="komentar">
+                        <p>{{komentar.komentar}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <Footer></Footer>
+</div>
 </template>
 
 <style>
@@ -116,6 +250,12 @@
    position: absolute;
    top: 0;
    width: 100%;
+}
+
+.tabela-opste-informacije
+{
+    width: 50%;
+    font-size: 20px;
 }
 
 #moj-komentar{
@@ -203,10 +343,21 @@ export default {
             prosecnaOcena: 0,
             mojiKomentari: [],
             mojeOcene: [],
-            ucitaneSlike: []
+            ucitaneSlike: [],
+            jezik: ''
         }
     },
     methods:{
+        napraviEmbeddedUrl(videoURL){
+            let deoZaUklanjanje = 'watch?v=';
+            let pozicija = videoURL.indexOf(deoZaUklanjanje);
+            let url = videoURL.slice(0, pozicija) + 'embed/' + videoURL.slice(pozicija + 8, videoURL.length);
+            return url;
+        },
+        promenaJezika() {
+            window.location.reload();
+            let jezik = localStorage.getItem("jezik");
+        },
         zameniSliku(id){
             let glavnaSlika = document.getElementById('slika-glavna');
             let sporednaSlika = document.getElementById('slika-sporedna-' + id);
@@ -221,8 +372,13 @@ export default {
             ocene.forEach(ocena => {
                 suma += ocena;
             });
-            this.prosecnaOcena = suma / ocene.length;
-            this.prosecnaOcena = this.prosecnaOcena.toFixed(2);
+            if(ocene.length == 0)
+                this.prosecnaOcena = 0;
+            else
+            {   
+                this.prosecnaOcena = suma / ocene.length;
+                this.prosecnaOcena = this.prosecnaOcena.toFixed(2);
+            }
         },
         ucitajMojeKomentare(){
             if(localStorage.getItem('mojiKomentari') == null)
@@ -246,23 +402,6 @@ export default {
                 this.mojeOcene = JSON.parse(localStorage.getItem('mojeOcene'));
             }
         },
-        test(){
-            if(localStorage.getItem('recepti') == null)
-            {
-                let recepti = [{
-                    id: 1,
-                    naziv: 'Recept neki',
-                    ocene: [4, 3, 4],
-                    trajanje: '45 min',
-                    tezina: 3,
-                    priprema: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium eius amet adipisci in non beatae facilis doloremque? Aut sit, esse repellat quisquam nesciunt repudiandae excepturi impedit vel neque quasi id?',
-                    videoUrl: 'https://www.youtube.com/embed/8nXqcugV2Y4',
-                    slike: ['1.jpg', '2.png', '3.jpg'],
-                    komentari: []
-                }];
-                localStorage.setItem('recepti', JSON.stringify(recepti));
-            }
-        },
         unesiKomentar(){
             let noviKomentar = document.getElementById('moj-komentar').value;
             if(noviKomentar != "")
@@ -273,7 +412,7 @@ export default {
                 };
                 let mojKomentarObj = {
                     idRecepta: this.mojRecept.id,
-                    imeRecepta: this.mojRecept.naziv,
+                    imeRecepta: this.mojRecept.ime,
                     komentar: noviKomentar,
                     vreme: this.dohvatiTrenutnoVreme()
                 };
@@ -282,8 +421,12 @@ export default {
                 localStorage.setItem('mojiKomentari', JSON.stringify(this.mojiKomentari));
 
                 this.mojRecept.komentari.push(komentarObj);
-
-                let sviRecepti = JSON.parse(localStorage.getItem('recepti'));
+                
+                let sviRecepti = [];
+                if(this.jezik == 'srpski')
+                    sviRecepti = JSON.parse(localStorage.getItem('listaRecepata'));
+                else
+                    sviRecepti = JSON.parse(localStorage.getItem('engleskiRecepti'));
 
                 for(let i = 0; i < sviRecepti.length; i++)
                 {
@@ -294,7 +437,10 @@ export default {
                     }
                 }
 
-                localStorage.setItem('recepti', JSON.stringify(sviRecepti));
+                if(this.jezik == 'srpski')
+                    localStorage.setItem('listaRecepata', JSON.stringify(sviRecepti));
+                else
+                    localStorage.setItem('engleskiRecepti', JSON.stringify(sviRecepti));
             }
         },
         dohvatiTrenutnoVreme(){
@@ -303,48 +449,58 @@ export default {
         },
         dohvatiSliku(img)
         {
-            return require('../assets/recepti/' + this.$route.params.id + '/' + 1);
+            return require('../assets/recepti/' + this.$route.params.id + '/' + '1.jpg');
         },
         unesiOcenu()
         {
             let ocena = parseInt(document.getElementById('moguceOcene').value);
             let novaMojaOcena = {
                 idRecepta: this.mojRecept.id,
-                imeRecepta: this.mojRecept.naziv,
+                imeRecepta: this.mojRecept.ime,
                 ocena: ocena
             }
             this.mojeOcene.push(novaMojaOcena);
             localStorage.setItem('mojeOcene', JSON.stringify(this.mojeOcene));
 
             this.mojRecept.ocene.push(ocena);
-            let sviRecepti = JSON.parse(localStorage.getItem('recepti'));
+            let sviRecepti = [];
 
-                for(let i = 0; i < sviRecepti.length; i++)
+            if(this.jezik == 'srpski')
+                sviRecepti = JSON.parse(localStorage.getItem('listaRecepata'));
+            else
+                sviRecepti = JSON.parse(localStorage.getItem('engleskiRecepti'));
+
+            for(let i = 0; i < sviRecepti.length; i++)
+            {
+                if(sviRecepti[i].id == this.mojRecept.id)
                 {
-                    if(sviRecepti[i].id == this.mojRecept.id)
-                    {
-                        sviRecepti[i] = this.mojRecept;
-                        break;
-                    }
+                    sviRecepti[i] = this.mojRecept;
+                    break;
                 }
-
-            localStorage.setItem('recepti', JSON.stringify(sviRecepti));
-
+            }
+            if(this.jezik == 'srpski')
+                localStorage.setItem('listaRecepata', JSON.stringify(sviRecepti));
+            else
+                localStorage.setItem('engleskiRecepti', JSON.stringify(sviRecepti));
             this.racunajProsecnuOcenu();
         },
         skiniPDF()
         {
-            let ime= this.mojRecept.naziv;
+            let ime= this.mojRecept.ime;
             var doc = new jsPDF();
-            doc.text(this.mojRecept.naziv, 10, 10, {align: 'left', maxWidth: 80, renderingMode: 'fill'});
+            doc.text(this.mojRecept.ime, 10, 10, {align: 'left', maxWidth: 80, renderingMode: 'fill'});
             doc.text(this.mojRecept.priprema, 10, 30, {align: 'left', maxWidth: 200});
             doc.save(ime + '.pdf');
         }
     },
     created(){
-        this.test();
-        let recepti = JSON.parse(localStorage.getItem('recepti'));
-        
+        this.jezik = localStorage.getItem('jezik');
+        let recepti = [];
+        if(this.jezik == 'srpski')
+            recepti = JSON.parse(localStorage.getItem('listaRecepata'));
+        else
+            recepti = JSON.parse(localStorage.getItem('engleskiRecepti'));
+
         for(let i = 0; i < recepti.length; i++)
         {
             if(recepti[i].id == this.$route.params.id)
@@ -359,10 +515,7 @@ export default {
 
     },
     mounted(){
-        /*$('.carousel').carousel('cycle');
-        $('.carousel').carousel({
-            pause: false
-        });*/
+        document.getElementById('tekst-recepta').innerHTML = this.mojRecept.kratakOpis;
     }
 }
 </script>

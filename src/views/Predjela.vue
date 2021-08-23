@@ -1,5 +1,6 @@
 <template>
-<Header></Header>
+<Header @osveziJezik="promenaJezika()"></Header>
+<div v-if="this.jezik == 'srpski'">
     <div class="row">
         BreadCrumbs
     </div>
@@ -29,6 +30,38 @@
     <div v-for="(recept, index) in filterListe" :key=index>
         <recept-kartica @refreshListu="obrisi(recept)" v-if="recept.tip == this.tipRecepta" :id="recept.id" :korisnikDodao="recept.korisnikDodao" :tip="recept.tip" :ime="recept.ime" :tezina ="recept.tezina" :ocena="recept.ocena" :kratakOpis="recept.kratakOpis" :slika="recept.slika" :trajanje="recept.trajanje" :opisJela="recept.opisJela"></recept-kartica>
     </div>
+</div>
+<div v-else>
+    <div class="row">
+        BreadCrumbs
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h3>Overview of appetizers</h3>
+        </div>
+    </div>
+    <div class="row">
+        <form>
+            <input id="search" type="text" placeholder="Search for recipes..." v-model="pretragaTekst"/>
+            
+            <button @click="pretraga()" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+            </button>
+            <select v-model="filter" data-trigger="" name="choices-single-default">
+                <option value="none">Sort</option>
+                <option value="tr">Difficulty ascending</option>
+                <option value="to">Difficulty descending</option>
+                <option value="or">Grade ascending</option>
+                <option value="oo">Grade descending</option>
+            </select>
+        </form>
+    </div>
+    <div v-for="(recept, index) in filterListe" :key=index>
+        <recept-kartica @refreshListu="obrisi(recept)" v-if="recept.tip == this.tipRecepta" :id="recept.id" :korisnikDodao="recept.korisnikDodao" :tip="recept.tip" :ime="recept.ime" :tezina ="recept.tezina" :ocena="recept.ocena" :kratakOpis="recept.kratakOpis" :slika="recept.slika" :trajanje="recept.trajanje" :opisJela="recept.opisJela"></recept-kartica>
+    </div>
+</div>
     <Footer></Footer>
 </template>
 
@@ -86,7 +119,8 @@ export default {
             pretragaTekst: '',
             filter:'',
             listaRecepata:[],
-            filtriranaLista:[]
+            filtriranaLista:[],
+            jezik:''
         }
     },
     computed: {
@@ -97,11 +131,19 @@ export default {
     created(){
         this.ucitajPodatke();
         //this.recepti = JSON.parse(localStorage.getItem('recepti'));
-        this.listaRecepata = JSON.parse(localStorage.getItem("listaRecepata"));
+        if (this.jezik == "engleski")
+            this.listaRecepata = JSON.parse(localStorage.getItem("engleskiRecepti"));
+        else 
+            this.listaRecepata = JSON.parse(localStorage.getItem("listaRecepata"));
         this.filtriranaLista = this.listaRecepata;
+        this.jezik = localStorage.getItem("jezik");
         document.title = 'Recepti';
     },
     methods: {
+        promenaJezika() {
+            window.location.reload();
+            let jezik = localStorage.getItem("jezik");
+        },
         obrisi(recept)
         {
             this.listaRecepata = JSON.parse(localStorage.getItem("listaRecepata"));

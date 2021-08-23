@@ -1,5 +1,5 @@
 <template v-if="show == true">
-<Header @osveziJezik="promenaJezika()"/>
+<Header @osveziJezik="promenaJezika()" />
   <div class="row">
     <div class="col">
       <!--<h2 id="top-3-recepta">Top 3 recepta</h2>-->
@@ -80,10 +80,9 @@ export default {
   },
   methods: {
     promenaJezika() {
-      window.location.reload();
-      let jezik = localStorage.getItem("jezik");
-      alert("Jezik iz pocetne" + jezik);
-    }
+            window.location.reload();
+            let jezik = localStorage.getItem("jezik");
+        },
   },
   created(){
     if (localStorage.getItem("listaRecepata") != null) {
@@ -301,7 +300,7 @@ export default {
           video: 'https://www.youtube.com/watch?v=TfOQHUWM-_M'
         },
         { id: 4,
-          ime: "Rendani tofu 'Ćorizo' takos", 
+          ime: "Grated tofu 'Choriso' tacos", 
           tezina:3.0, 
           ocena:0.0, 
           slika:"assets/recepti/glavnaJela/rendanitofu1.jpg", 
@@ -425,7 +424,7 @@ export default {
           video: 'https://www.youtube.com/watch?v=6OuJzGA0Umg'
         }
       ];
-    let id = 7;
+    let id = 13;
     localStorage.setItem("staticId", id);
     let jezik = "srpski";
     localStorage.setItem("jezik", jezik);

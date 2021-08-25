@@ -34,7 +34,7 @@
       <Header @osveziJezik="promenaJezika()"/>
       <div class="row">
         <div class="col">
-          <h2 id="top-3-recepta">Top 3 recepta</h2>
+          <h2 id="top-3-recepta">Top 3 recipes</h2>
         </div>  
       </div>
       <div class="row">
@@ -120,6 +120,7 @@ export default {
         },
   },
   created(){
+    
     if(localStorage.getItem("jezik") != null)
         {
           this.jezik = localStorage.getItem("jezik");
@@ -130,9 +131,9 @@ export default {
           localStorage.setItem('jezik', 'srpski');
         }
 
-    if (localStorage.getItem("listaRecepata") != null) {
-      localStorage.removeItem("listaRecepata");
-    }
+    //if (localStorage.getItem("listaRecepata") != null) {
+      //localStorage.removeItem("listaRecepata");
+    //}
     let recepti = [
           { id: 1,
             ime: "Kaubojski kavijar", 
@@ -516,13 +517,17 @@ export default {
             ocene: []
         }
       ];
+
     let id = 13;
-    localStorage.setItem("staticId", id);
+    if (localStorage.getItem("staticId") == null)
+      localStorage.setItem("staticId", id);
     let jezik = "srpski";
     if(localStorage.getItem("jezik") == null)
       localStorage.setItem("jezik", jezik);
-    localStorage.setItem("listaRecepata", JSON.stringify(recepti));
-    localStorage.setItem("engleskiRecepti", JSON.stringify(engleskiRecepti));
+    if (localStorage.getItem("listaRecepata") == null) {
+      localStorage.setItem("listaRecepata", JSON.stringify(recepti));
+      localStorage.setItem("engleskiRecepti", JSON.stringify(engleskiRecepti));
+    }
     if (document != null)
       document.title = 'Početna';
   },

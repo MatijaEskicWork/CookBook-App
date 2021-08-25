@@ -143,7 +143,7 @@ export default{
         receptiLocalStorage.sort(function(recept1, recept2){
           
           // Nije moglo da se ubaci u funkciju, jer ne moze da se prosledi this
-          let prosecnaOcena1 = 0;
+          /*let prosecnaOcena1 = 0;
           let prosecnaOcena2 = 0;
           
           let ocene = recept1.ocene;
@@ -176,7 +176,8 @@ export default{
             prosecnaOcena2 = prosecnaOcena2.toFixed(2);
           }
 
-          return prosecnaOcena2 - prosecnaOcena1;
+          return prosecnaOcena2 - prosecnaOcena1;*/
+          return recept2.ocena - recept1.ocena;
         });
 
         return receptiLocalStorage.slice(0, 3);
@@ -193,9 +194,9 @@ export default{
         let h4Naziv = div.getElementsByTagName('h4')[0].innerHTML = "<a class='a-carousel'href=" + linkKaReceptu + ">" + recept.ime + "</a>";
         let pOcena = 0;
         if(this.jezik == 'srpski')
-          pOcena = div.getElementsByTagName('p')[0].innerHTML = "Ocena: " + this.nadjiProsecnuOcenu(recept);
+          pOcena = div.getElementsByTagName('p')[0].innerHTML = "Ocena: " + recept.ocena;
         else
-          pOcena = div.getElementsByTagName('p')[0].innerHTML = "Rating: " + this.nadjiProsecnuOcenu(recept);
+          pOcena = div.getElementsByTagName('p')[0].innerHTML = "Rating: " + recept.ocena;
       }
     },
     mounted(){

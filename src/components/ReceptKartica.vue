@@ -29,7 +29,7 @@
             <div class="naslovKartica">{{this.ime}}</div>
             <div class="informacijeKartica">
                 <div class="levoKartica">
-                    <img v-if="this.korisnikDodao == False" class="karticaSlika" :src="require('../assets/recepti/' + this.id + '/' + '1.jpg')" alt="">
+                    <img v-if="this.korisnikDodao == false" class="karticaSlika" :src="require('../assets/recepti/' + this.id + '/' + '1.jpg')" alt="">
                     <img v-else class="karticaSlika" :src="require('../assets/recepti/musaka.jpg')" alt="">
                 </div> <!-- Bilo je  require('@/' + this.slika) -->
                 <div class="centarKartica">

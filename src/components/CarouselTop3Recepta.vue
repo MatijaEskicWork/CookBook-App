@@ -184,7 +184,13 @@ export default{
       },
       dohvatiSliku(id)
       {
+        try{
           return require('../assets/recepti/' + id + '/' + '1.jpg');
+        }
+        catch(exception)
+        {
+            return require('../assets/recepti/musaka.jpg');
+        }
       },
       urediHTML(div, recept)
       {

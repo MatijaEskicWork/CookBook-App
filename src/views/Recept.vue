@@ -349,6 +349,10 @@ export default {
     },
     methods:{
         napraviEmbeddedUrl(videoURL){
+            if(videoURL == '')
+            {
+                return 'https://www.youtube.com/embed/nqY3tv-y62A';
+            }
             let deoZaUklanjanje = 'watch?v=';
             let pozicija = videoURL.indexOf(deoZaUklanjanje);
             let url = videoURL.slice(0, pozicija) + 'embed/' + videoURL.slice(pozicija + 8, videoURL.length);
@@ -368,17 +372,17 @@ export default {
         },
         racunajProsecnuOcenu(){
             let ocene = this.mojRecept.ocene;
+            if(ocene.length == 0)
+            {
+                this.prosecnaOcena = 0;
+                return 0;
+            }
             let suma = 0;
             ocene.forEach(ocena => {
                 suma += ocena;
             });
-            if(ocene.length == 0)
-                this.prosecnaOcena = 0;
-            else
-            {   
-                this.prosecnaOcena = suma / ocene.length;
-                this.prosecnaOcena = this.prosecnaOcena.toFixed(2);
-            }
+            this.prosecnaOcena = suma / ocene.length;
+            this.prosecnaOcena = this.prosecnaOcena.toFixed(2);
             return this.prosecnaOcena;
         },
         ucitajMojeKomentare(){
@@ -450,7 +454,13 @@ export default {
         },
         dohvatiSliku(img)
         {
-            return require('../assets/recepti/' + this.$route.params.id + '/' + '1.jpg');
+            try{
+                return require('../assets/recepti/' + this.$route.params.id + '/' + '1.jpg');
+            }
+            catch(exception)
+            {
+                return require('../assets/recepti/musaka.jpg');
+            }
         },
         unesiOcenu()
         {
@@ -504,10 +514,16 @@ export default {
         skiniPDF()
         {
             let ime= this.mojRecept.ime;
-            var doc = new jsPDF();
-            doc.text(this.mojRecept.ime, 10, 10, {align: 'left', maxWidth: 80, renderingMode: 'fill'});
-            doc.text(this.mojRecept.priprema, 10, 30, {align: 'left', maxWidth: 200});
-            doc.save(ime + '.pdf');
+            var doc = new jsPDF('p', 'pt', 'a4');
+            doc.setFontSize(24);
+            doc.text(this.mojRecept.ime, 10, 30, {align: 'left', maxWidth: 500, renderingMode: 'fill'});
+            //doc.text(this.mojRecept.kratakOpis, 10, 30, {align: 'left', maxWidth: 200});
+            let newTempElem = document.createElement("div")
+            newTempElem.style = 'font-size:12px; width:600px';
+            newTempElem.innerHTML = this.mojRecept.kratakOpis;
+            doc.html(newTempElem, { callback:function(doc){
+                doc.save(ime + '.pdf');
+            }, x: 10, y: 80});
         }
     },
     created(){

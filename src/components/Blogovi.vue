@@ -102,7 +102,7 @@ export default {
         if(localStorage.getItem("jezik") != null)
         {
             this.jezik = localStorage.getItem("jezik");
-            alert(this.jezik);
+            //alert(this.jezik);
         }
         else
         {

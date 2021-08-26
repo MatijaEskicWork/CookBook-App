@@ -490,11 +490,11 @@ export default {
             for (let i = 0; i < recepti1.length; i++){
                 if (recepti1[i].id == id) {
                     recepti1[i].ocena = prosecnaOcena;
-                    alert("Prosecna ocena:" + prosecnaOcena + "; id:" + id);
+                    //alert("Prosecna ocena:" + prosecnaOcena + "; id:" + id);
                 }
                 if (recepti2[i].id == id) {
                     recepti2[i].ocena = prosecnaOcena;
-                    alert("Prosecna ocena:" + prosecnaOcena + "; id:" + id);
+                    //alert("Prosecna ocena:" + prosecnaOcena + "; id:" + id);
                 }
             }
             localStorage.setItem('listaRecepata', JSON.stringify(recepti1));

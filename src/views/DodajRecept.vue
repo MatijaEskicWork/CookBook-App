@@ -156,16 +156,16 @@ export default {
                     }
                     skracenoUputstvo = this.uputstvo.slice(0, duzina);
 
-                    let id = localStorage.getItem("staticId");
+                    let id = parseInt(localStorage.getItem("staticId"));
                     let recept = {
                         id: id,
                         ime:this.imeRecepta,
-                        tezina:this.tezinaSpremanja,
+                        tezina:parseFloat(this.tezinaSpremanja),
                         ocena:0.0,
                         slika:'assets/recepti/musaka.jpg',
                         kratakOpis:this.uputstvo,
                         tip:this.grupaRecepta,
-                        trajanje:this.duzinaSpremanja,
+                        trajanje:parseInt(this.duzinaSpremanja),
                         opisJela:"",
                         video:"",
                         korisnikDodao:true,
@@ -177,14 +177,13 @@ export default {
                     localStorage.setItem("staticId", id);
                     this.listaRecepata.push(recept);
                     localStorage.setItem("listaRecepata", JSON.stringify(this.listaRecepata));
-                    this.sinhronizujRecepte(recept); // Dodaj recept i u niz mojih recepata (Nemanja)
+                    //this.sinhronizujRecepte(recept); // Dodaj recept i u niz mojih recepata (Nemanja)
                     this.greska='';
                     this.greska = '';
-                    id++;
                 }
             }
         },
-        sinhronizujRecepte(recept) // Metoda za dupliranje recepta u niz recepata - NEMANJA
+        /*sinhronizujRecepte(recept) // Metoda za dupliranje recepta u niz recepata - NEMANJA
         {
             let receptiLocalStorage = [];
             if(localStorage.getItem('recepti') == null)
@@ -227,7 +226,7 @@ export default {
 
             mojiReceptiLocalStorage.push(noviMojRecept);
             localStorage.setItem('mojiRecepti', JSON.stringify(mojiReceptiLocalStorage));
-        }
+        }*/
     }
 }
 </script>

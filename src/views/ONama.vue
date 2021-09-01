@@ -10,16 +10,13 @@
             najbolji u onome što radiš, moraš pre svega da voliš i uživaš u tome. Naš moto je malo drugačiji:"Da bi bio najbolji,
             moraš da jedeš ono što voliš i u čemu uživaš". To nam je i bila misija, da podstaknemo ljude, mlade i stare, muškarce
             i žene, da jedu domaću hranu i da se hrane zdravije. Mislim da smo u tome i uspeli, a o tome govore brojne nagrade koje smo
-            osvojili: - "Najbolji sajt sa kuvarskom tematikom" za Jugoistočnu Evropu, osvojena tri puta zaredom(2018,2019,2020)
-                      - "Medalja za podsticaj Srbije na zdrav život" dobijena 2019. godine,
-                      - "Najveći kuvar" na nivou Balkana, najveća skupina različitih recepata na celom Balkanu, osvojena dvaput
-                      zaredom(2019,2020)
-        </div>
-
-        <div class="map-responsive">
-
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.9695566671926!2d20.4899555757406!3d44.80180906051903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7a83a8e24805%3A0x944fd38de78342d7!2z0KLRgNGI0ZvQsNC90YHQutCwIDIwLCDQkdC10L7Qs9GA0LDQtCAxMTEyMA!5e0!3m2!1ssr!2srs!4v1625665651783!5m2!1ssr!2srs" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-
+            osvojili:<br><br>
+                      <ul class="neuredjeneNagrade">
+                      <li>"Najbolji sajt sa kuvarskom tematikom" za Jugoistočnu Evropu, osvojena tri puta zaredom(2018,2019,2020)</li>
+                      <li>"Medalja za podsticaj Srbije na zdrav život" dobijena 2019. godine</li>
+                      <li>"Najveći kuvar" na nivou Balkana, najveća skupina različitih recepata na celom Balkanu, osvojena dvaput
+                      zaredom(2019,2020)</li>
+            </ul>
         </div> 
         <hr>
 
@@ -40,7 +37,11 @@
             </div>
 
         </div> 
+        <div class="map-responsive">
 
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.9695566671926!2d20.4899555757406!3d44.80180906051903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7a83a8e24805%3A0x944fd38de78342d7!2z0KLRgNGI0ZvQsNC90YHQutCwIDIwLCDQkdC10L7Qs9GA0LDQtCAxMTEyMA!5e0!3m2!1ssr!2srs!4v1625665651783!5m2!1ssr!2srs" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+        </div>
     </div>
     <div v-else>
         <div class="naslov">
@@ -51,17 +52,13 @@
             and delicious meals which will make their day more interesting and their life healthier and more exciting. You know the old saying - If you wanna be
             the best in what you do, you must therefore love and enjoy doing it. Our moto is a little bit different:"To be the best, you need to eat what you enjoy and love".
             That was indeed our mission, to encourage people, younger and older, men and women, to eat homemade food and diet healthier.
-            I think we succeeded in that, and the best teller are our many awards and acomplishments we have:
-                      - "The best website with cooking theme" for Southeastern Europe, achieved three times in a row(2018,2019,2020)
-                      - "Medal for encouraging Serbian people on healthy lifestyle" won in year 2019,
-                      - "The largest cookbook" in the Balkan, the biggest aggregate of different recipes in the Balkan, achieved twice in a row(2019,2020)
+            I think we succeeded in that, and the best teller are our many awards and acomplishments we have:<br><br>
+            <ul class="neuredjeneNagrade">
+                      <li>"The best website with cooking theme" for Southeastern Europe, achieved three times in a row(2018,2019,2020)</li>
+                      <li>"Medal for encouraging Serbian people on healthy lifestyle" won in year 2019</li>
+                      <li>"The largest cookbook" in the Balkan, the biggest aggregate of different recipes in the Balkan, achieved twice in a row(2019,2020)</li>
+            </ul>
         </div>
-
-        <div class="map-responsive">
-
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.9695566671926!2d20.4899555757406!3d44.80180906051903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7a83a8e24805%3A0x944fd38de78342d7!2z0KLRgNGI0ZvQsNC90YHQutCwIDIwLCDQkdC10L7Qs9GA0LDQtCAxMTEyMA!5e0!3m2!1ssr!2srs!4v1625665651783!5m2!1ssr!2srs" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-
-        </div> 
         <hr>
 
         <div class="kontakt">
@@ -81,13 +78,19 @@
             </div>
 
         </div> 
+        <div class="map-responsive">
 
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.9695566671926!2d20.4899555757406!3d44.80180906051903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7a83a8e24805%3A0x944fd38de78342d7!2z0KLRgNGI0ZvQsNC90YHQutCwIDIwLCDQkdC10L7Qs9GA0LDQtCAxMTEyMA!5e0!3m2!1ssr!2srs!4v1625665651783!5m2!1ssr!2srs" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+        </div> 
     </div>
     <Footer></Footer>
 </template>
 
 <style>
-
+.neuredjeneNagrade {
+    text-align: left;
+}
 </style>
 
 <script>

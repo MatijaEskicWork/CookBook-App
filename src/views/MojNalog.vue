@@ -6,7 +6,7 @@
             <h1 class="naslov-moj-nalog">Moji recepti</h1>
             <ol class="lista-moji-recepti" id="lista-mojih-recepata">
                 <li v-for="recept in mojiRecepti" :key="recept.id">
-                    <router-link v-bind:to="'/recept/' + recept.id"> {{recept.naziv}}</router-link>
+                    <router-link v-bind:to="'/recept/' + recept.id" class="link-klasa"> {{recept.naziv}}</router-link>
                 </li>
             </ol>
         </div>
@@ -27,7 +27,7 @@
                 <tbody>
                     <tr v-for="(komentar, index) in mojiKomentari" :key="index">
                         <td>{{index + 1}}.</td>
-                        <td><router-link v-bind:to="'/recept/' + komentar.idRecepta">{{komentar.imeRecepta}}</router-link></td>
+                        <td><router-link v-bind:to="'/recept/' + komentar.idRecepta" class='link-klasa'>{{komentar.imeRecepta}}</router-link></td>
                         <td>{{komentar.komentar}}</td>
                         <td>{{komentar.vreme}}</td>
                     </tr>
@@ -54,7 +54,7 @@
                 <tbody>
                     <tr v-for="(ocena, index) in mojeOcene" :key="index">
                         <td>{{index + 1}}.</td>
-                        <td><router-link v-bind:to="'/recept/' + ocena.idRecepta">{{ocena.imeRecepta}}</router-link></td>
+                        <td><router-link v-bind:to="'/recept/' + ocena.idRecepta" class="link-klasa">{{ocena.imeRecepta}}</router-link></td>
                         <td>{{ocena.ocena}}</td>
                     </tr>
                 </tbody>
@@ -70,7 +70,7 @@
             <h1 class="naslov-moj-nalog">My recipes</h1>
             <ol class="lista-moji-recepti" id="lista-mojih-recepata">
                 <li v-for="recept in mojiRecepti" :key="recept.id">
-                    <router-link v-bind:to="'/recept/' + recept.id"> {{recept.naziv}}</router-link>
+                    <router-link v-bind:to="'/recept/' + recept.id" class='link-klasa'> {{recept.naziv}}</router-link>
                 </li>
             </ol>
         </div>
@@ -91,7 +91,7 @@
                 <tbody>
                     <tr v-for="(komentar, index) in mojiKomentari" :key="index">
                         <td>{{index + 1}}.</td>
-                        <td><router-link v-bind:to="'/recept/' + komentar.idRecepta">{{komentar.imeRecepta}}</router-link></td>
+                        <td><router-link v-bind:to="'/recept/' + komentar.idRecepta" class="link-klasa">{{komentar.imeRecepta}}</router-link></td>
                         <td>{{komentar.komentar}}</td>
                         <td>{{komentar.vreme}}</td>
                     </tr>
@@ -118,7 +118,7 @@
                 <tbody>
                     <tr v-for="(ocena, index) in mojeOcene" :key="index">
                         <td>{{index + 1}}.</td>
-                        <td><router-link v-bind:to="'/recept/' + ocena.idRecepta">{{ocena.imeRecepta}}</router-link></td>
+                        <td><router-link v-bind:to="'/recept/' + ocena.idRecepta" class="link-klasa">{{ocena.imeRecepta}}</router-link></td>
                         <td>{{ocena.ocena}}</td>
                     </tr>
                 </tbody>
@@ -142,7 +142,15 @@
         font-size: 20px;
     }
     .horizontalna-linija{
-        border: 2px solid firebrick;
+        border: 1px solid firebrick;
+    }
+    .link-klasa{
+        text-decoration: none;
+        color: rgb(0, 153, 255);
+        
+    }
+    .link-klasa:hover{
+        color: rgb(0, 153, 255);
     }
 </style>
 

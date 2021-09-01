@@ -65,8 +65,8 @@
 
 <style>
 #top-3-recepta{
-  margin-top: 50px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   text-align: center;
   text-decoration: underline;
 }
@@ -75,7 +75,7 @@
   margin-bottom: 5vh;
 }
 #header-kulinarski-kursevi{
-  margin-top: 10vh;
+  margin-top: 5vh;
   margin-bottom: 5vh;
 }
 #baneri{

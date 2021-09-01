@@ -56,7 +56,7 @@
                 </div>
             </div>
         </div>
-        <hr>
+        <hr class="linija">
         <div class="row">
             <div class="col-12">
                 <h2>Način pripreme</h2>
@@ -67,20 +67,20 @@
                 <!--<span>{{mojRecept.kratakOpis}}</span>-->
             </div>
         </div>
-        <hr>
+        <hr class="linija">
         <div class="row">
             <div class="col-12">
                 <h2>Video uputstvo za pripremu</h2>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-12">
                 <div class="iframe-container">
                     <iframe id="video" :src="napraviEmbeddedUrl(mojRecept.video)" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
-        <hr>
+        <hr class="linija">
         <div class="row">
             <div class="col-12">
                 <h2>Ostavite komentar</h2>
@@ -98,7 +98,7 @@
                 <button id="btn-unesi-komentar" class="btn btn-outline-success" @click="unesiKomentar()">Unesi komentar</button>
             </div>
         </div>
-        <hr>
+        <hr class="linija">
         <div class="row">
             <div class="col-12">
                 <h2>Svi komentari</h2>
@@ -173,7 +173,7 @@
                 </div>
             </div>
         </div>
-        <hr>
+        <hr class="linija">
         <div class="row">
             <div class="col-12">
                 <h2>Preparation</h2>
@@ -184,20 +184,20 @@
                 <!--<span>{{mojRecept.kratakOpis}}</span>-->
             </div>
         </div>
-        <hr>
+        <hr class="linija">
         <div class="row">
             <div class="col-12">
                 <h2>Video tutorial</h2>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-12">
                 <div class="iframe-container">
                     <iframe id="video" :src="napraviEmbeddedUrl(mojRecept.video)" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
-        <hr>
+        <hr class="linija">
         <div class="row">
             <div class="col-12">
                 <h2>Leave a comment</h2>
@@ -215,7 +215,7 @@
                 <button id="btn-unesi-komentar" class="btn btn-outline-success" @click="unesiKomentar()">Enter the comment</button>
             </div>
         </div>
-        <hr>
+        <hr class="linija">
         <div class="row">
             <div class="col-12">
                 <h2>All comments</h2>
@@ -241,6 +241,7 @@
   /* 16:9 aspect ratio */
   padding-top: 56.25%;
   position: relative;
+  margin: auto;
 }
 
 .iframe-container iframe {
@@ -256,6 +257,15 @@
 {
     width: 50%;
     font-size: 20px;
+}
+
+.linija{
+  border: 1px dotted #ff0000;
+}
+
+h2{
+    margin-top: 3vh;
+    margin-bottom: 3vh;
 }
 
 #moj-komentar{
@@ -280,14 +290,14 @@
     border-color: rgb(39, 37, 37);
     border-width: 1px;
     border-radius: 5px;
-    margin-top: 50px;
+    margin-bottom: 50px;
 
     width: 50%;
     height: auto;
     margin-left: auto;
     margin-right: auto;
 
-    box-shadow: 5px 5px rgba(143, 28, 28, 0.5);
+    box-shadow: 5px 5px rgba(97, 29, 29, 0.5);
 }
 
 .komentar>p{

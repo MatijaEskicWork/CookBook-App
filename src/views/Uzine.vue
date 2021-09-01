@@ -2,9 +2,6 @@
 <Header @osveziJezik="promenaJezika()"></Header>
 <div v-if="this.jezik == 'srpski'">
     <div class="row">
-        BreadCrumbs
-    </div>
-    <div class="row">
         <div class="col-12">
             <h3>Pregled {{this.naziv}}</h3>
         </div>
@@ -18,26 +15,25 @@
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                 </svg>
             </button>
-            <select v-model="filter" data-trigger="" name="choices-single-default">
-                <option value="none">Sortiraj</option>
-                <option value="tr">Težina rastuće</option>
-                <option value="to">Težina opadajuće</option>
-                <option value="or">Ocena rastuće</option>
-                <option value="oo">Ocena opadajuće</option>
-            </select>
+            <div class="select">
+                <select class ="sel form-control selcls" v-model="filter" data-trigger="" name="choices-single-default">
+                    <option value="none">Sortiraj</option>
+                    <option value="tr">Težina rastuće</option>
+                    <option value="to">Težina opadajuće</option>
+                    <option value="or">Ocena rastuće</option>
+                    <option value="oo">Ocena opadajuće</option>
+                </select>
+            </div>
         </form>
     </div>
-    <div v-for="recept in filterListe">
+    <div v-for="(recept, index) in filterListe" :key=index>
         <recept-kartica @refreshListu="obrisi(recept)" v-if="recept.tip == this.tipRecepta" :id="recept.id" :korisnikDodao="recept.korisnikDodao" :tip="recept.tip" :ime="recept.ime" :tezina ="recept.tezina" :ocena="recept.ocena" :kratakOpis="recept.kratakOpis" :slika="recept.slika" :trajanje="recept.trajanje" :opisJela="recept.opisJela"></recept-kartica>
     </div>
 </div>
 <div v-else>
     <div class="row">
-        BreadCrumbs
-    </div>
-    <div class="row">
         <div class="col-12">
-            <h3>Overview of snacks</h3>
+            <h3>Overview of appetizers</h3>
         </div>
     </div>
     <div class="row">
@@ -49,17 +45,21 @@
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                 </svg>
             </button>
-            <select v-model="filter" data-trigger="" name="choices-single-default">
-                <option value="none">Sort</option>
-                <option value="tr">Difficulty ascending</option>
-                <option value="to">Difficulty descending</option>
-                <option value="or">Grade ascending</option>
-                <option value="oo">Grade descending</option>
-            </select>
+            <div class="select">
+                <select class ="sel form-control selcls" v-model="filter" data-trigger="" name="choices-single-default">
+                    <option value="none">Sort</option>
+                    <option value="tr">Difficulty ascending</option>
+                    <option value="to">Difficulty descending</option>
+                    <option value="or">Grade ascending</option>
+                    <option value="oo">Grade descending</option>
+                </select>
+            </div>
         </form>
     </div>
-    <div v-for="recept in filterListe">
-        <recept-kartica @refreshListu="obrisi(recept)" v-if="recept.tip == this.tipRecepta" :id="recept.id" :korisnikDodao="recept.korisnikDodao" :tip="recept.tip" :ime="recept.ime" :tezina ="recept.tezina" :ocena="recept.ocena" :kratakOpis="recept.kratakOpis" :slika="recept.slika" :trajanje="recept.trajanje" :opisJela="recept.opisJela"></recept-kartica>
+    <div class="kartice">
+        <div v-for="(recept, index) in filterListe" :key=index>
+            <recept-kartica @refreshListu="obrisi(recept)" v-if="recept.tip == this.tipRecepta" :id="recept.id" :korisnikDodao="recept.korisnikDodao" :tip="recept.tip" :ime="recept.ime" :tezina ="recept.tezina" :ocena="recept.ocena" :kratakOpis="recept.kratakOpis" :slika="recept.slika" :trajanje="recept.trajanje" :opisJela="recept.opisJela"></recept-kartica>
+        </div>
     </div>
 </div>
     <Footer></Footer>

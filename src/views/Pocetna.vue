@@ -272,7 +272,7 @@ export default {
           korisnikDodao: false,
           obrisan: false,
           trajanje: 40,
-          opisJela: "Više od pola kilograma različitog voća i samo četvrt kile brašna, integralnog.</br>Potpuno zdravo, a i posno ako se izbaci par sastojaka.</br>Dobra užina, početak dana ili poklon.",
+          opisJela: "Više od pola kilograma različitog voća i samo četvrt kile brašna, integralnog. Potpuno zdravo, a i posno ako se izbaci par sastojaka. Dobra užina, početak dana ili poklon.",
           video: 'https://www.youtube.com/watch?v=cH13RFjI2Vw',
           komentari: [],
             ocene: []
@@ -431,7 +431,7 @@ export default {
           korisnikDodao: false,
           obrisan:false,
           trajanje: 60,
-          opisJela: "How much power is contained in a small stick.</br>Concentrated carbohydrates will quickly restore your lost strength, and dried fruit will complement the taste of healthy seeds.",
+          opisJela: "How much power is contained in a small stick. Concentrated carbohydrates will quickly restore your lost strength, and dried fruit will complement the taste of healthy seeds.",
           video:'https://www.youtube.com/watch?v=isHZFjJ0pwo',
           komentari: [],
             ocene: []
@@ -524,10 +524,10 @@ export default {
     let jezik = "srpski";
     if(localStorage.getItem("jezik") == null)
       localStorage.setItem("jezik", jezik);
-    //if (localStorage.getItem("listaRecepata") == null) {
+    if (localStorage.getItem("listaRecepata") == null) {
       localStorage.setItem("listaRecepata", JSON.stringify(recepti));
       localStorage.setItem("engleskiRecepti", JSON.stringify(engleskiRecepti));
-    //}
+    }
     if (document != null)
       document.title = 'Početna';
   },

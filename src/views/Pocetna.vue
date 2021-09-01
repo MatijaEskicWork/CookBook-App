@@ -65,8 +65,8 @@
 
 <style>
 #top-3-recepta{
-  margin-top: 50px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   text-align: center;
   text-decoration: underline;
 }
@@ -75,7 +75,7 @@
   margin-bottom: 5vh;
 }
 #header-kulinarski-kursevi{
-  margin-top: 10vh;
+  margin-top: 5vh;
   margin-bottom: 5vh;
 }
 #baneri{
@@ -524,10 +524,10 @@ export default {
     let jezik = "srpski";
     if(localStorage.getItem("jezik") == null)
       localStorage.setItem("jezik", jezik);
-    //if (localStorage.getItem("listaRecepata") == null) {
+    if (localStorage.getItem("listaRecepata") == null) {
       localStorage.setItem("listaRecepata", JSON.stringify(recepti));
       localStorage.setItem("engleskiRecepti", JSON.stringify(engleskiRecepti));
-    //}
+    }
     if (document != null)
       document.title = 'Početna';
   },

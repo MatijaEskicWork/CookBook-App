@@ -251,42 +251,17 @@ export default {
                     this.uspeh = 'Uspesno ste dodali recept.';
                     this.engleskiUspeh = "You added recipe successfully."
                     //this.sinhronizujRecepte(recept); // Dodaj recept i u niz mojih recepata (Nemanja)
+                    this.dodajUListuMojihRecepata(recept);
                     this.engleskaGreska = '';
                     this.greska='';
                 }
             }
         },
-        /*sinhronizujRecepte(recept) // Metoda za dupliranje recepta u niz recepata - NEMANJA
+        dodajUListuMojihRecepata(noviRecept)
         {
-            let receptiLocalStorage = [];
-            if(localStorage.getItem('recepti') == null)
-            {
-                localStorage.setItem('recepti', JSON.stringify(receptiLocalStorage));
-            }
-            else
-                receptiLocalStorage = JSON.parse(localStorage.getItem('recepti'));
-            
-            let idRecepta = receptiLocalStorage[receptiLocalStorage.length - 1].id + 1;
-
-            let noviRecept = {
-                id: idRecepta,
-                komentari: [],
-                naziv: recept.ime,
-                ocene: recept.ocena,
-                priprema: recept.kratakOpis,
-                slike: [],
-                tezina: recept.tezina,
-                trajanje: recept.trajanje,
-                videoUrl: 'https://www.youtube.com/watch?v=tGFp1wJrjuI'
-            }
-
-            receptiLocalStorage.push(noviRecept);
-            localStorage.setItem('recepti', JSON.stringify(receptiLocalStorage));
-
-            // dodavanje u mojiRecepti u LocalStorage
             let noviMojRecept = {
                 id: noviRecept.id,
-                naziv: noviRecept.naziv
+                naziv: noviRecept.ime
             }
 
             let mojiReceptiLocalStorage = [];
@@ -299,7 +274,7 @@ export default {
 
             mojiReceptiLocalStorage.push(noviMojRecept);
             localStorage.setItem('mojiRecepti', JSON.stringify(mojiReceptiLocalStorage));
-        }*/
+        }
     }
 }
 </script>

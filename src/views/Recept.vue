@@ -484,6 +484,7 @@ export default {
             localStorage.setItem('mojeOcene', JSON.stringify(this.mojeOcene));
 
             this.mojRecept.ocene.push(ocena);
+            this.mojRecept.ocena = this.racunajProsecnuOcenu();
             let sviRecepti = [];
 
             if(this.jezik == 'srpski')

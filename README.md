@@ -1,4 +1,6 @@
-# Making digital cookbook, where you can view, add, delete all kind of recipes
+# CookBook VueJS App
+
+Making digital cookbook, where you can view, add, delete all kind of recipes
 
 ## Project setup
 ```
